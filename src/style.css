@@ -1,0 +1,97 @@
+body {
+    background: linear-gradient(100deg, #001219 0%, #0a0a0b 100%);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+
+.profile h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #0091ad;
+}
+
+.profile p {
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.links {
+   display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 85%; 
+    margin: 0 auto;  
+}
+
+.link-card {
+    background: #1c1c1e;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    
+    display: grid;
+    grid-template-columns: 35px 1fr;
+    align-items: center;
+}
+
+.link-card i {
+    grid-column: 1;
+    font-size: 1.2rem;
+    text-align: left;
+    color: #008fac; 
+}
+
+.link-card span {
+    grid-column: 2;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #004b5a;
+    margin-bottom: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    object-position: center 65%;
+}
+
+.special {
+    border-color: #005161;
+    color: #00d4ff;
+    font-size: 0.9rem;
+}
+
+
+.profile .role {
+    color: #00d4ff; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bio {
+    color: #ccc; 
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 320px; 
+    margin: 0 auto 0px auto; 
+}
