@@ -726,9 +726,9 @@
         <span class="cl-icon">💬</span>
         WhatsApp — +55 (19) 99981-9875
       </a>
-      <a href="/cdn-cgi/l/email-protection#284c4d5e4b4941595d4d5b41445e49684f45494144064b4745" class="contact-link">
+      <a href="mailto:devcaiquesilva@gmail.com" class="contact-link">
         <span class="cl-icon">✉️</span>
-        <span class="__cf_email__" data-cfemail="5236372431333b232737213b3e243312353f333b3e7c313d3f">[email&#160;protected]</span>
+        devcaiquesilva@gmail.com
       </a>
       <a href="https://github.com/devcaiquesilva" target="_blank" class="contact-link">
         <span class="cl-icon">⌥</span>
@@ -741,9 +741,21 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Caique Silva — Todos os direitos reservados.</p>
-  <p class="footer-right">Built with ☕ & 🤖 in Brazil</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const observer = new IntersectionObserver((entries) => {
-    en
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Hero elements visible immediately
+  document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('visible'));
+</script>
+</body>
+</html>
