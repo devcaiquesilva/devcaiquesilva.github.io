@@ -1,56 +1,749 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Caique Silva | Links</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="src/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caique Silva — Developer</title>
 
-    <meta name="title" content="Caique Silva | Dev Mobile">
-    <meta name="description" content="Desenvolvedor Flutter & Dart. Confira meus projetos e redes sociais.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://devcaiquesilva.github.io/">
-    <meta property="og:title" content="Caique Silva | Dev Mobile">
-    <meta property="og:description" content="Especialista em Flutter & Dart. Veja meu portfólio!">
-    <meta property="og:image" content="https://github.com/devcaiquesilva.png">
+<style>
+  :root {
+    --bg: #070d1a;
+    --bg2: #0c1628;
+    --bg3: #111e35;
+    --blue: #1a6ef5;
+    --blue-light: #4d94ff;
+    --blue-glow: rgba(26,110,245,0.12);
+    --blue-mid: #1346a8;
+    --cyan: #00c8ff;
+    --cyan-dim: rgba(0,200,255,0.18);
+    --text: #e8f0ff;
+    --text-dim: #7a90b8;
+    --text-muted: #3d5070;
+    --border: #1a2d50;
+    --border-bright: rgba(26,110,245,0.4);
+    --mono: 'Courier New', Courier, monospace;
+    --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
+
+  /* GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(26,110,245,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,110,245,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(7,13,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-logo span { color: var(--text-dim); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-light); }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-content { max-width: 700px; }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--cyan);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .name-highlight {
+    background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-bio {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border-bright);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+  /* STATUS INDICATOR */
+  .status-bar {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  /* TECH GRID */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .tech-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .tech-card:hover {
+    border-color: var(--blue);
+    background: var(--bg3);
+  }
+
+  .tech-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .tech-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-org {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-org.kuroda { color: var(--blue-light); }
+  .project-org.personal { color: var(--cyan); }
+  .project-org.mystery { color: #a78bfa; }
+
+  .project-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-family: var(--mono);
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--blue-glow);
+    border: 1px solid var(--border-bright);
+    color: var(--blue-light);
+    letter-spacing: 0.05em;
+  }
+
+  .tag.mystery-tag {
+    background: rgba(167,139,250,0.1);
+    border-color: rgba(167,139,250,0.3);
+    color: #a78bfa;
+  }
+
+  /* MYSTERY CARD */
+  .project-card.mystery-card {
+    border-color: rgba(167,139,250,0.2);
+    background: rgba(15,12,35,0.8);
+  }
+
+  .mystery-card::before {
+    background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
+    opacity: 1 !important;
+  }
+
+  .mystery-blur {
+    filter: blur(4px);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .mystery-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .mystery-icon {
+    font-size: 2rem;
+  }
+
+  .mystery-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #a78bfa;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-text h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-text p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 380px;
+    font-family: var(--mono);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.25rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    min-width: 280px;
+  }
+
+  .contact-link:hover {
+    border-color: var(--blue-light);
+    color: var(--blue-light);
+  }
+
+  .contact-link .cl-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  footer .footer-right {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* SCROLL ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* CURSOR LINE HERO */
+  .cursor-blink {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--cyan);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .container { padding: 3rem 1.5rem; }
+    .contact-inner { padding: 3rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-link { min-width: auto; width: 100%; }
+  }
+</style>
 </head>
 <body>
-    <div class="tech-grid"></div>
-    <div class="container">
-        <div class="profile">
-            <img src="src/devcaiquesilva.jpeg" alt="Foto de Caique Silva" class="avatar">
-            <h1>Caique Silva</h1>
-            <p>Desenvolvedor Mobile | Flutter & Dart.</p>
-            <p class="bio">Conecte-se comigo e explore meus projetos abaixo!🚀🔥🚀</p>
-        </div>
 
-        <nav class="links">
-            <a href="https://github.com/devcaiquesilva" aria-label="Acesse meu perfil no GitHub" target="_blank" class="link-card">
-                <i class="fab fa-github"></i>
-                <span>GitHub - Meus Projetos</span>
-            </a>
-            <a href="https://linkedin.com/in/devcaiquesilva" aria-label="Acesse meu perfil no Linkedin" target="_blank" class="link-card">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn - Conexões</span>
-            </a>
-            <a href="https://youtube.com/@devcaiquesilva" aria-label="Acesse meu canal no Youtube" target="_blank" class="link-card">
-                <i class="fab fa-youtube"></i>
-                <span>Youtube - Canal</span>
-            </a>
-            <a href="mailto:devcaiquesilva@gmail.com" class="link-card">
-                <i class="fas fa-envelope"></i>
-                <span>E-mail - Contato</span>
-            </a>
-            
-        </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>~/</span>devcaiquesilva</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">sobre</a></li>
+    <li><a href="#tecnologias">tecnologias</a></li>
+    <li><a href="#projetos">projetos</a></li>
+    <li><a href="#contato">contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="sobre">
+  <div class="hero-content">
+    <div class="hero-tag">Desenvolvedor & Empreendedor</div>
+    <h1>
+      Caique<br>
+      <span class="name-highlight">Silva</span><span class="cursor-blink"></span>
+    </h1>
+    <p class="hero-bio">
+      Construo sistemas inteligentes, aplico automações e desenvolvo produtos que unem tecnologia e resultado real de negócio. Do app mobile ao agente de IA, do back-end ao deploy em VPS — do conceito à produção.
+    </p>
+    <div class="hero-actions">
+      <a href="#projetos" class="btn-primary">Ver projetos →</a>
+      <a href="#contato" class="btn-outline">Entrar em contato</a>
     </div>
-    <a href="https://wa.me/5519999819875?text=Olá%20Caíque,%20vi%20seu%20portfólio%20e%20queria%20saber%20mais%20sobre%20o%20seu%20trabalho!" 
-    class="whatsapp-float" 
-    target="_blank" 
-    aria-label="Falar com Caique no WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    </a>
-</body>
+    <div class="status-bar">
+      <div class="status-item"><span class="dot"></span> disponível para projetos</div>
+      <div class="status-item">📍 Brasil — Socorro, SP</div>
+      <div class="status-item">🕐 UTC-3</div>
+    </div>
+  </div>
+</section>
 
-</html>
+<hr class="divider">
+
+<!-- TECNOLOGIAS -->
+<div class="container" id="tecnologias">
+  <div class="section-header fade-in">
+    <div class="section-label">// stack</div>
+    <h2 class="section-title">Tecnologias</h2>
+  </div>
+  <div class="tech-grid fade-in">
+    <div class="tech-card"><div class="tech-icon">🐦</div><div class="tech-name">Flutter / Dart</div></div>
+    <div class="tech-card"><div class="tech-icon">🐍</div><div class="tech-name">Python</div></div>
+    <div class="tech-card"><div class="tech-icon">⚡</div><div class="tech-name">FastAPI</div></div>
+    <div class="tech-card"><div class="tech-icon">🟩</div><div class="tech-name">Node.js</div></div>
+    <div class="tech-card"><div class="tech-icon">🔄</div><div class="tech-name">N8N</div></div>
+    <div class="tech-card"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
+    <div class="tech-card"><div class="tech-icon">🐧</div><div class="tech-name">Linux</div></div>
+    <div class="tech-card"><div class="tech-icon">🖥️</div><div class="tech-name">VPS / Cloud</div></div>
+    <div class="tech-card"><div class="tech-icon">🤖</div><div class="tech-name">AI Agents</div></div>
+    <div class="tech-card"><div class="tech-icon">🧠</div><div class="tech-name">Claude AI</div></div>
+    <div class="tech-card"><div class="tech-icon">🗄️</div><div class="tech-name">PostgreSQL</div></div>
+    <div class="tech-card"><div class="tech-icon">☁️</div><div class="tech-name">Cloudflare</div></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PROJETOS -->
+<div class="container" id="projetos">
+  <div class="section-header fade-in">
+    <div class="section-label">// build log</div>
+    <h2 class="section-title">Projetos</h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- KURODA -->
+    <div class="project-card fade-in">
+      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-name">Kuroda Ads Display</div>
+      <div class="project-desc">Player de mídia digital para exibição de anúncios em ambiente corporativo. App Windows com splash animado, fullscreen e API própria em Node.js rodando em servidor Linux.</div>
+      <div class="project-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">Windows</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Linux</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-name">Kuroda Ads Admin</div>
+      <div class="project-desc">Painel administrativo para gestão de campanhas, mídias e agendamentos do sistema de display. Interface web integrada ao Display.</div>
+      <div class="project-tags">
+        <span class="tag">Flutter Web</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-name">Separador B2B</div>
+      <div class="project-desc">Sistema de separação de pedidos B2B para operação logística interna. Automação de processos e controle de estoque em tempo real.</div>
+      <div class="project-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">Python</span>
+        <span class="tag">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-name">Kuroda Security</div>
+      <div class="project-desc">Solução de segurança e controle de acesso para o ambiente Kuroda. Monitoramento, autenticação e gestão de permissões.</div>
+      <div class="project-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Auth</span>
+      </div>
+    </div>
+
+    <!-- PESSOAIS -->
+    <div class="project-card fade-in">
+      <div class="project-org personal">◆ Pessoal</div>
+      <div class="project-name">ACE — Adaptive Cognitive Engine</div>
+      <div class="project-desc">Assistente de voz com IA multi-agente. STT com Groq Whisper, TTS em PT-BR, integração Claude AI e execução de comandos por voz.</div>
+      <div class="project-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">Claude AI</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">N8N</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-org personal">◆ Pessoal</div>
+      <div class="project-name">Crypto Pulse</div>
+      <div class="project-desc">Plataforma de análise de criptomoedas com rastreamento de preços, indicadores técnicos e alertas automatizados em tempo real.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">AI</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="position:relative; min-height: 180px; border-color: rgba(26,110,245,0.3); background: rgba(7,13,30,0.9);">
+      <div style="position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--blue), var(--cyan));"></div>
+      <div class="mystery-blur">
+        <div class="project-org">◆ Em breve</div>
+        <div class="project-name">Projeto Mercado Financeiro</div>
+        <div class="project-desc">Sistema de sinais para mercado futuro com análise técnica por IA e execução automatizada de operações.</div>
+        <div class="project-tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">IA</span>
+          <span class="tag">B3</span>
+        </div>
+      </div>
+      <div class="mystery-overlay">
+        <div class="mystery-icon">🔒</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue-light); letter-spacing:0.2em; text-transform:uppercase;">Em desenvolvimento</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(77,148,255,0.6); letter-spacing:0.1em; margin-top:4px;">NXFintech.exe</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTATO -->
+<section class="contact-section" id="contato">
+  <div class="contact-inner">
+    <div class="contact-text fade-in">
+      <h2>Vamos construir<br>algo juntos.</h2>
+      <p>Aberto a projetos freelance, consultorias e parcerias em produtos digitais e automações com IA.</p>
+    </div>
+    <div class="contact-links fade-in">
+      <a href="https://wa.me/5519999819875" target="_blank" class="contact-link">
+        <span class="cl-icon">💬</span>
+        WhatsApp — +55 (19) 99981-9875
+      </a>
+      <a href="/cdn-cgi/l/email-protection#284c4d5e4b4941595d4d5b41445e49684f45494144064b4745" class="contact-link">
+        <span class="cl-icon">✉️</span>
+        <span class="__cf_email__" data-cfemail="5236372431333b232737213b3e243312353f333b3e7c313d3f">[email&#160;protected]</span>
+      </a>
+      <a href="https://github.com/devcaiquesilva" target="_blank" class="contact-link">
+        <span class="cl-icon">⌥</span>
+        github.com/devcaiquesilva
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Caique Silva — Todos os direitos reservados.</p>
+  <p class="footer-right">Built with ☕ & 🤖 in Brazil</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const observer = new IntersectionObserver((entries) => {
+    en
