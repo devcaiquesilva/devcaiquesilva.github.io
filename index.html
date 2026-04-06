@@ -192,15 +192,36 @@
   }
 
   @media (max-width: 768px) {
-    .hero { padding: 7rem 1.5rem 3rem; }
-    .container { padding: 3rem 1.5rem; }
-    .contact-inner { padding: 3rem 1.5rem; }
-    footer { padding: 2rem 1.5rem; }
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
-    .projects-grid, .exp-grid { grid-template-columns: 1fr; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-content { max-width: 100%; }
+    .hero-tag { font-size: 10px; letter-spacing: 0.08em; }
+    .hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); margin-bottom: 1rem; }
+    .hero-bio { font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .hero-stats { gap: 1.25rem; margin-bottom: 1.5rem; }
+    .hero-stat-num { font-size: 1.3rem; }
+    .hero-stat-label { font-size: 9px; }
+    .hero-actions { gap: 0.75rem; margin-bottom: 2rem; }
+    .btn-primary, .btn-outline { font-size: 12px; padding: 0.65rem 1.25rem; }
+    .status-bar { gap: 0.75rem; }
+    .status-item { font-size: 11px; }
+    .container { padding: 3rem 1.5rem; }
+    .section-title { font-size: 1.5rem; }
+    .section-label { font-size: 10px; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-card { padding: 1.25rem; }
+    .exp-company { font-size: 0.95rem; }
+    .exp-items li { font-size: 11px; }
+    .projects-grid { grid-template-columns: 1fr; }
     .span-2 { grid-column: span 1 !important; }
-    .contact-link { min-width: auto; width: 100%; }
+    .project-name { font-size: 0.95rem; }
+    .project-desc { font-size: 0.8rem; }
+    .contact-inner { padding: 3rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    .contact-text h2 { font-size: 1.5rem; }
+    .contact-text p { font-size: 0.85rem; }
+    .contact-link { min-width: auto; width: 100%; font-size: 12px; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 </style>
 </head>
@@ -290,7 +311,6 @@
   </div>
   <div class="exp-grid">
 
-    <!-- KURODA DEV -->
     <div class="exp-card kuroda-exp fade-in">
       <div class="exp-header">
         <div>
@@ -315,7 +335,6 @@
       </div>
     </div>
 
-    <!-- KURODA TI -->
     <div class="exp-card kuroda-exp fade-in">
       <div class="exp-header">
         <div>
@@ -342,7 +361,6 @@
       </div>
     </div>
 
-    <!-- MELOZ -->
     <div class="exp-card meloz-exp fade-in">
       <div class="exp-header">
         <div>
@@ -369,7 +387,6 @@
       </div>
     </div>
 
-    <!-- PESSOAL -->
     <div class="exp-card pessoal-exp fade-in">
       <div class="exp-header">
         <div>
@@ -428,12 +445,11 @@
     <div class="project-card fade-in">
       <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Separador B2B</div>
-      <div class="project-desc">Sistema de Separação de Pedidos para mercado B2B com controle de estoque,scan de produtos e fluxo de separação completo. Impressão de pedidos com um clique no celular via API Node.js.</div>
+      <div class="project-desc">Sistema de Separação de Pedidos para mercado B2B com controle de estoque, scan de produtos e fluxo de separação completo. Impressão de pedidos com um clique no celular via API Node.js.</div>
       <div class="project-tags">
         <span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">Node.js</span><span class="tag">Linux</span>
       </div>
     </div>
-
 
     <div class="project-card fade-in">
       <div class="project-org meloz">◆ MELOZ</div>
