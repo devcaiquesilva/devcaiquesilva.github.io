@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caique Silva &mdash; Developer</title>
-
+<title>Caique Silva &mdash; Desenvolvedor</title>
 <style>
   :root {
     --bg: #070d1a;
@@ -12,10 +11,7 @@
     --bg3: #111e35;
     --blue: #1a6ef5;
     --blue-light: #4d94ff;
-    --blue-glow: rgba(26,110,245,0.12);
-    --blue-mid: #1346a8;
     --cyan: #00c8ff;
-    --cyan-dim: rgba(0,200,255,0.18);
     --text: #e8f0ff;
     --text-dim: #7a90b8;
     --text-muted: #3d5070;
@@ -26,42 +22,26 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); overflow-x: hidden; }
 
   body::before {
     content: '';
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background-image:
       linear-gradient(rgba(26,110,245,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(26,110,245,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
 
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(7,13,26,0.85);
-    backdrop-filter: blur(12px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,13,26,0.9); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-
   .nav-logo { font-family: var(--mono); font-size: 14px; color: var(--cyan); letter-spacing: 0.1em; }
   .nav-logo span { color: var(--text-dim); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -70,51 +50,29 @@
 
   section { position: relative; z-index: 1; }
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; max-width: 1100px; margin: 0 auto; }
   .hero-content { max-width: 700px; }
 
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--cyan);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
+  .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--cyan); }
 
   .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .name-highlight { background: linear-gradient(135deg, var(--blue-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-  .hero h1 .name-highlight {
-    background: linear-gradient(135deg, var(--blue-light), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  .hero-bio { font-size: 1.05rem; color: var(--text-dim); line-height: 1.75; max-width: 580px; margin-bottom: 2rem; }
 
-  .hero-bio { font-size: 1.1rem; color: var(--text-dim); line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem; font-weight: 400; }
+  .hero-stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+  .hero-stat-num { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; color: var(--blue-light); line-height: 1; }
+  .hero-stat-label { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
   .btn-primary { padding: 0.75rem 2rem; background: var(--blue); color: #fff; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s, transform 0.15s; }
   .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
-
   .btn-outline { padding: 0.75rem 2rem; background: transparent; color: var(--text-dim); font-family: var(--mono); font-size: 13px; letter-spacing: 0.05em; border: 1px solid var(--border-bright); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: border-color 0.2s, color 0.2s; }
   .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); }
 
-  .status-bar { margin-top: 3rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .status-bar { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
   .status-item { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse-dot 2s infinite; }
   @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -130,11 +88,35 @@
   .tech-icon { font-size: 22px; line-height: 1; }
   .tech-name { font-family: var(--mono); font-size: 12px; color: var(--text-dim); font-weight: 500; }
 
+  /* EXPERIENCE */
+  .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .exp-card { background: var(--bg2); border: 1px solid var(--border); padding: 1.75rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
+  .exp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .exp-card.kuroda-exp::before { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+  .exp-card.meloz-exp::before { background: linear-gradient(90deg, #dc2626, #ef4444); }
+  .exp-card.pessoal-exp::before { background: linear-gradient(90deg, var(--cyan), #7c3aed); }
+  .exp-card:hover { border-color: var(--border-bright); }
+
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+  .exp-company { font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+  .exp-badge { font-family: var(--mono); font-size: 10px; padding: 3px 8px; letter-spacing: 0.08em; border: 1px solid; }
+  .exp-badge.dev { background: rgba(26,110,245,0.12); border-color: var(--border-bright); color: var(--blue-light); }
+  .exp-badge.ti { background: rgba(0,200,255,0.08); border-color: rgba(0,200,255,0.3); color: var(--cyan); }
+  .exp-badge.trabalho { background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.35); color: #f87171; }
+  .exp-badge.pessoal { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3); color: #a78bfa; }
+
+  .exp-role { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+
+  .exp-items { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.25rem; }
+  .exp-items li { font-family: var(--mono); font-size: 12px; color: var(--text-dim); padding-left: 1rem; position: relative; line-height: 1.5; }
+  .exp-items li::before { content: '\203A'; position: absolute; left: 0; color: var(--blue-light); }
+
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
   /* PROJECTS */
   .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .mystery-card { grid-column: span 3; }
   @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } .mystery-card { grid-column: span 2; } }
-
   .project-card { background: var(--bg2); border: 1px solid var(--border); padding: 1.5rem; transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden; }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); opacity: 0; transition: opacity 0.25s; }
   .project-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
@@ -143,12 +125,14 @@
   .project-org { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .project-org.kuroda { color: var(--blue-light); }
   .project-org.personal { color: var(--cyan); }
+  .project-org.meloz { color: #f87171; }
 
   .project-name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
   .project-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; font-family: var(--mono); }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; background: var(--blue-glow); border: 1px solid var(--border-bright); color: var(--blue-light); letter-spacing: 0.05em; }
+  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; background: rgba(26,110,245,0.12); border: 1px solid var(--border-bright); color: var(--blue-light); letter-spacing: 0.05em; }
+  .tag.red { background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.35); color: #f87171; }
 
   .mystery-blur { filter: blur(4px); user-select: none; pointer-events: none; opacity: 0.5; }
   .mystery-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
@@ -161,34 +145,86 @@
   .contact-text h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
   .contact-text p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; max-width: 380px; font-family: var(--mono); }
   .contact-links { display: flex; flex-direction: column; gap: 12px; }
-  .contact-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.25rem; background: var(--bg); border: 1px solid var(--border); color: var(--text-dim); font-family: var(--mono); font-size: 13px; text-decoration: none; transition: border-color 0.2s, color 0.2s; min-width: 280px; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.25rem; background: var(--bg); border: 1px solid var(--border); color: var(--text-dim); font-family: var(--mono); font-size: 13px; text-decoration: none; transition: border-color 0.2s, color 0.2s; min-width: 290px; }
   .contact-link:hover { border-color: var(--blue-light); color: var(--blue-light); }
   .contact-link .cl-icon { font-size: 16px; width: 20px; text-align: center; }
-
-  /* SNACKBAR */
-  .snackbar { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--bg3); border: 1px solid var(--border-bright); color: var(--cyan); font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; z-index: 9999; white-space: nowrap; }
-  .snackbar::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
-  .snackbar.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   footer { padding: 2rem 4rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   footer p { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.05em; }
 
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
   .cursor-blink { display: inline-block; width: 3px; height: 1em; background: var(--cyan); animation: blink 1s step-end infinite; vertical-align: text-bottom; margin-left: 2px; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* SNACKBAR */
+  .snackbar {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bg3);
+    border: 1px solid var(--border-bright);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+  .snackbar::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+  .snackbar.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
   @media (max-width: 768px) {
-    .hero { padding: 7rem 1.5rem 3rem; }
-    .container { padding: 3rem 1.5rem; }
-    .contact-inner { padding: 3rem 1.5rem; flex-direction: column; align-items: flex-start; }
-    footer { padding: 2rem 1.5rem; }
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-content { max-width: 100%; }
+    .hero-tag { font-size: 10px; letter-spacing: 0.08em; }
+    .hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); margin-bottom: 1rem; }
+    .hero-bio { font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .hero-stats { gap: 1.25rem; margin-bottom: 1.5rem; }
+    .hero-stat-num { font-size: 1.3rem; }
+    .hero-stat-label { font-size: 9px; }
+    .hero-actions { gap: 0.75rem; margin-bottom: 2rem; }
+    .btn-primary, .btn-outline { font-size: 12px; padding: 0.65rem 1.25rem; }
+    .status-bar { gap: 0.75rem; }
+    .status-item { font-size: 11px; }
+    .container { padding: 3rem 1.5rem; }
+    .section-title { font-size: 1.5rem; }
+    .section-label { font-size: 10px; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-card { padding: 1.25rem; }
+    .exp-company { font-size: 0.95rem; }
+    .exp-items li { font-size: 11px; }
     .projects-grid { grid-template-columns: 1fr; }
     .mystery-card { grid-column: span 1 !important; }
-    .contact-link { min-width: auto; width: 100%; }
+    .span-2 { grid-column: span 1 !important; }
+    .project-name { font-size: 0.95rem; }
+    .project-desc { font-size: 0.8rem; }
+    .contact-inner { padding: 3rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    .contact-text h2 { font-size: 1.5rem; }
+    .contact-text p { font-size: 0.85rem; }
+    .contact-link { min-width: auto; width: 100%; font-size: 12px; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 </style>
 </head>
@@ -199,150 +235,267 @@
   <ul class="nav-links">
     <li><a href="#sobre">sobre</a></li>
     <li><a href="#tecnologias">tecnologias</a></li>
+    <li><a href="#experiencia">experiência</a></li>
     <li><a href="#projetos">projetos</a></li>
     <li><a href="#contato">contato</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="sobre">
   <div class="hero-content">
-    <div class="hero-tag">Desenvolvedor &amp; Empreendedor</div>
+    <div class="hero-tag">Desenvolvedor de Software &amp; TI &middot; 23 anos</div>
     <h1>
       Caique<br>
       <span class="name-highlight">Silva</span><span class="cursor-blink"></span>
     </h1>
     <p class="hero-bio">
-      Construo sistemas inteligentes, aplico automações e desenvolvo produtos que unem tecnologia e resultado real de negócio. Do app mobile ao agente de IA, do back-end ao deploy em VPS — do conceito à produção.
+      5 anos transformando ideias em produtos reais. Foco principal em apps mobile com Flutter, expandindo para APIs com Node.js e Python. Da câmera IP ao agente de IA — do rack ao deploy em VPS — faço o ciclo completo.
     </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">anos programando</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">10+</span>
+        <span class="hero-stat-label">projetos entregues</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-label">empresas atendidas</span>
+      </div>
+    </div>
     <div class="hero-actions">
       <a href="#projetos" class="btn-primary">Ver projetos &rarr;</a>
       <a href="#contato" class="btn-outline">Entrar em contato</a>
     </div>
     <div class="status-bar">
       <div class="status-item"><span class="dot"></span> disponível para projetos</div>
-      <div class="status-item">&#128205; Brasil &mdash; Socorro, SP</div>
-      <div class="status-item">&#128336; UTC-3</div>
+      <div class="status-item">📍 Socorro, SP — Brasil</div>
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
+<!-- TECNOLOGIAS -->
 <div class="container" id="tecnologias">
   <div class="section-header fade-in">
     <div class="section-label">// stack</div>
     <h2 class="section-title">Tecnologias</h2>
   </div>
   <div class="tech-grid fade-in">
-    <div class="tech-card"><div class="tech-icon">&#x1F426;</div><div class="tech-name">Flutter / Dart</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F40D;</div><div class="tech-name">Python</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x26A1;</div><div class="tech-name">FastAPI</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F7E9;</div><div class="tech-name">Node.js</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F504;</div><div class="tech-name">N8N</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F433;</div><div class="tech-name">Docker</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F427;</div><div class="tech-name">Linux</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F5A5;</div><div class="tech-name">VPS / Cloud</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F916;</div><div class="tech-name">AI Agents</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F9E0;</div><div class="tech-name">Claude AI</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x1F5C4;</div><div class="tech-name">PostgreSQL</div></div>
-    <div class="tech-card"><div class="tech-icon">&#x2601;</div><div class="tech-name">Cloudflare</div></div>
+    <div class="tech-card"><div class="tech-icon">🐦</div><div class="tech-name">Flutter / Dart</div></div>
+    <div class="tech-card"><div class="tech-icon">🐍</div><div class="tech-name">Python</div></div>
+    <div class="tech-card"><div class="tech-icon">🟩</div><div class="tech-name">Node.js</div></div>
+    <div class="tech-card"><div class="tech-icon">🔄</div><div class="tech-name">N8N</div></div>
+    <div class="tech-card"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
+    <div class="tech-card"><div class="tech-icon">🐧</div><div class="tech-name">Linux</div></div>
+    <div class="tech-card"><div class="tech-icon">🖥️</div><div class="tech-name">VPS / Cloud</div></div>
+    <div class="tech-card"><div class="tech-icon">🤖</div><div class="tech-name">AI Agents</div></div>
+    <div class="tech-card"><div class="tech-icon">🧠</div><div class="tech-name">Claude AI</div></div>
+    <div class="tech-card"><div class="tech-icon">📡</div><div class="tech-name">Redes / Cisco</div></div>
+    <div class="tech-card"><div class="tech-icon">🔒</div><div class="tech-name">VPN</div></div>
+    <div class="tech-card"><div class="tech-icon">📹</div><div class="tech-name">CFTV / DVR</div></div>
+    <div class="tech-card"><div class="tech-icon">🏪</div><div class="tech-name">ERP / CRM</div></div>
+    <div class="tech-card"><div class="tech-icon">🧾</div><div class="tech-name">PDV / Retaguarda</div></div>
+    <div class="tech-card"><div class="tech-icon">🗜️</div><div class="tech-name">Rack / Infra</div></div>
   </div>
 </div>
 
 <hr class="divider">
 
+<!-- EXPERIENCIA -->
+<div class="container" id="experiencia">
+  <div class="section-header fade-in">
+    <div class="section-label">// work history</div>
+    <h2 class="section-title">Experiência</h2>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card kuroda-exp fade-in">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">M.S. Kuroda</div>
+          <div class="exp-role">Desenvolvedor de Software</div>
+        </div>
+        <span class="exp-badge dev">Dev</span>
+      </div>
+      <ul class="exp-items">
+        <li>App Flutter para exibição de mídia digital (Kuroda Ads Display)</li>
+        <li>Painel admin web e mobile integrado ao sistema de displays (Kuroda Ads Admin)</li>
+        <li>Sistema B2B com controle de estoque, fluxo de separação e impressão de pedidos via celular com um clique</li>
+        <li>API Node.js para integração de impressão de pedidos do Separador B2B</li>
+        <li>Sistema de segurança e controle de acesso (Kuroda Security)</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Shell Script</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Riverpod</span>
+      </div>
+    </div>
+
+    <div class="exp-card kuroda-exp fade-in">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">M.S. Kuroda</div>
+          <div class="exp-role">Suporte e Infraestrutura de TI</div>
+        </div>
+        <span class="exp-badge ti">TI</span>
+      </div>
+      <ul class="exp-items">
+        <li>Instalação e configuração de câmeras IP e DVR / CFTV</li>
+        <li>Montagem e organização de rack de servidor</li>
+        <li>Configuração de switches e roteadores Cisco</li>
+        <li>Implantação e manutenção de VPN corporativa</li>
+        <li>Administração de sistema ERP e CRM</li>
+        <li>Análise e manutenção de sistema PDV e Retaguarda</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="tag">Cisco</span>
+        <span class="tag">VPN</span>
+        <span class="tag">CFTV</span>
+        <span class="tag">ERP</span>
+        <span class="tag">PDV</span>
+        <span class="tag">Rack</span>
+      </div>
+    </div>
+
+    <div class="exp-card meloz-exp fade-in">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">MELOZ</div>
+          <div class="exp-role">Desenvolvedor de Software</div>
+        </div>
+        <span class="exp-badge trabalho">Dev</span>
+      </div>
+      <ul class="exp-items">
+        <li>Desenvolvimento de aplicativos mobile com Flutter</li>
+        <li>Autenticação com Firebase Auth, Supabase, Google Login e Apple Login</li>
+        <li>Gerenciamento de estado com GetX e Riverpod</li>
+        <li>Consumo de APIs REST com Dio e integrações externas</li>
+        <li>Interfaces complexas com fidelidade total ao design</li>
+        <li>Clean Architecture em todos os projetos — modelagem de banco focada em velocidade, segurança e manutenção fácil</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="tag red">Flutter</span>
+        <span class="tag red">Firebase</span>
+        <span class="tag red">Supabase</span>
+        <span class="tag red">GetX</span>
+        <span class="tag red">Riverpod</span>
+        <span class="tag red">Clean Arch</span>
+      </div>
+    </div>
+
+    <div class="exp-card pessoal-exp fade-in">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company">Projetos Próprios</div>
+          <div class="exp-role">Founder &amp; Desenvolvedor</div>
+        </div>
+        <span class="exp-badge pessoal">Personal</span>
+      </div>
+      <ul class="exp-items">
+        <li>ACE — assistente de voz com IA multi-agente (Groq Whisper + Claude AI)</li>
+        <li>Crypto Pulse — análise de criptomoedas com Flutter, Riverpod e Dio</li>
+        <li>NXFintech — plataforma fintech em desenvolvimento</li>
+        <li>Automações com N8N, Claude API e agentes de IA</li>
+        <li>Infra própria: VPS, Docker, Cloudflare Tunnel</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="tag">Claude AI</span>
+        <span class="tag">N8N</span>
+        <span class="tag">Flutter</span>
+        <span class="tag">Riverpod</span>
+        <span class="tag">VPS</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PROJETOS -->
 <div class="container" id="projetos">
   <div class="section-header fade-in">
     <div class="section-label">// build log</div>
     <h2 class="section-title">Projetos</h2>
   </div>
-
   <div class="projects-grid">
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">&#9670; Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Kuroda Ads Display</div>
-      <div class="project-desc">Player de mídia digital para exibição de anúncios em ambiente corporativo. App Windows com splash animado, fullscreen e API própria em Node.js rodando em servidor Linux.</div>
+      <div class="project-desc">Player de mídia digital para exibição de anúncios. App Windows com splash animado, fullscreen, API Node.js em servidor Linux e sincronização de itens via Shell Script (md5sum) com o MGV7.</div>
       <div class="project-tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">Windows</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Linux</span>
+        <span class="tag">Flutter</span><span class="tag">Windows</span><span class="tag">Node.js</span><span class="tag">Linux</span><span class="tag">Shell Script</span>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">&#9670; Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Kuroda Ads Admin</div>
-      <div class="project-desc">Painel administrativo para gestão de campanhas, mídias e agendamentos do sistema de display. Interface web integrada ao Display.</div>
+      <div class="project-desc">Painel administrativo web e mobile para gestão de campanhas, mídias e agendamentos. Integrado ao sistema de displays em tempo real.</div>
       <div class="project-tags">
-        <span class="tag">Flutter Web</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">Docker</span>
+        <span class="tag">Flutter</span><span class="tag">Flutter Web</span><span class="tag">Node.js</span>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">&#9670; Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Separador B2B</div>
-      <div class="project-desc">Sistema de separação de pedidos B2B para operação logística interna. Automação de processos e controle de estoque em tempo real.</div>
+      <div class="project-desc">Sistema de Separação de Pedidos para mercado B2B com controle de estoque, scan de produtos e fluxo de separação completo. Impressão de pedidos com um clique no celular via API Node.js.</div>
       <div class="project-tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">Python</span>
-        <span class="tag">PostgreSQL</span>
+        <span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">Node.js</span><span class="tag">Linux</span>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">&#9670; Kuroda</div>
-      <div class="project-name">Kuroda Security</div>
-      <div class="project-desc">Solução de segurança e controle de acesso para o ambiente Kuroda. Monitoramento, autenticação e gestão de permissões.</div>
+      <div class="project-org meloz">◆ MELOZ</div>
+      <div class="project-name">Apps Mobile MELOZ</div>
+      <div class="project-desc">Aplicativos mobile robustos com Clean Architecture, autenticação múltipla (Firebase, Supabase, Google, Apple) e interfaces complexas com fidelidade total ao design.</div>
       <div class="project-tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">Auth</span>
+        <span class="tag red">Flutter</span><span class="tag red">Firebase</span><span class="tag red">Supabase</span><span class="tag red">Riverpod</span>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org personal">&#9670; Pessoal</div>
-      <div class="project-name">ACE &mdash; Adaptive Cognitive Engine</div>
+      <div class="project-org personal">◆ Pessoal</div>
+      <div class="project-name">ACE — Adaptive Cognitive Engine</div>
       <div class="project-desc">Assistente de voz com IA multi-agente. STT com Groq Whisper, TTS em PT-BR, integração Claude AI e execução de comandos por voz.</div>
       <div class="project-tags">
-        <span class="tag">Flutter</span>
-        <span class="tag">Claude AI</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">N8N</span>
+        <span class="tag">Flutter</span><span class="tag">Claude AI</span><span class="tag">N8N</span><span class="tag">Groq</span>
       </div>
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org personal">&#9670; Pessoal</div>
+      <div class="project-org personal">◆ Pessoal</div>
       <div class="project-name">Crypto Pulse</div>
-      <div class="project-desc">Plataforma de análise de criptomoedas com rastreamento de preços, indicadores técnicos e alertas automatizados em tempo real.</div>
+      <div class="project-desc">App de análise de criptomoedas com rastreamento de preços e indicadores técnicos. Conexão com APIs externas via Dio, arquitetura com Riverpod e Clean Architecture.</div>
       <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">AI</span>
+        <span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">Dio</span><span class="tag">Clean Arch</span>
       </div>
     </div>
 
-    <div class="project-card fade-in mystery-card" style="position:relative; min-height: 200px; border-color: rgba(26,110,245,0.3); background: rgba(7,13,30,0.9);">
-      <div style="position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--blue), var(--cyan));"></div>
+    <!-- MYSTERY -->
+    <div class="project-card fade-in span-2" style="position:relative;min-height:200px;border-color:rgba(26,110,245,0.3);background:rgba(7,13,30,0.9);grid-column:span 2;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1a6ef5,#00c8ff);"></div>
       <div class="mystery-blur">
-        <div class="project-org">&#9670; Em breve</div>
-        <div class="project-name">Projeto Mercado Financeiro</div>
-        <div class="project-desc">Sistema de sinais para mercado futuro com análise técnica por IA e execução automatizada de operações.</div>
+        <div class="project-org">◆ Em breve</div>
+        <div class="project-name">NXFintech</div>
+        <div class="project-desc">Uma Fintech em desenvolvimento.</div>
         <div class="project-tags">
-          <span class="tag">Flutter</span>
-          <span class="tag">IA</span>
-          <span class="tag">B3</span>
+          <span class="tag">Flutter</span><span class="tag">IA</span><span class="tag">B3</span><span class="tag">Node.js</span>
         </div>
       </div>
       <div class="mystery-overlay">
-        <div class="mystery-icon">&#x1F512;</div>
-        <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--blue-light);letter-spacing:0.2em;text-transform:uppercase;">Em desenvolvimento</div>
-        <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(77,148,255,0.6);letter-spacing:0.1em;margin-top:4px;">NXFintech.exe</div>
+        <div class="mystery-icon">🔒</div>
+        <div style="font-family:'Courier New',monospace;font-size:11px;color:#4d94ff;letter-spacing:0.2em;text-transform:uppercase;">Em desenvolvimento</div>
+        <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(77,148,255,0.55);letter-spacing:0.1em;margin-top:4px;">NXFintech.exe</div>
       </div>
     </div>
 
@@ -351,24 +504,29 @@
 
 <hr class="divider">
 
+<!-- CONTATO -->
 <section class="contact-section" id="contato">
   <div class="contact-inner">
     <div class="contact-text fade-in">
-      <h2>Vamos construir<br>algo juntos.</h2>
+      <h2>Vamos construir<br>algo juntos!</h2>
       <p>Aberto a projetos freelance, consultorias e parcerias em produtos digitais e automações com IA.</p>
     </div>
     <div class="contact-links fade-in">
       <a href="https://wa.me/5519999819875" target="_blank" class="contact-link">
-        <span class="cl-icon">&#x1F4AC;</span>
-        WhatsApp &mdash; +55 (19) 99981-9875
+        <span class="cl-icon">💬</span>
+        WhatsApp — +55 (19) 99981-9875
       </a>
       <a href="#" onclick="copyEmail(event)" class="contact-link">
-        <span class="cl-icon">&#x2709;</span>
+        <span class="cl-icon">✉️</span>
         devcaiquesilva@gmail.com
       </a>
       <a href="https://github.com/devcaiquesilva" target="_blank" class="contact-link">
-        <span class="cl-icon">&#x2325;</span>
+        <span class="cl-icon">⌥</span>
         github.com/devcaiquesilva
+      </a>
+      <a href="https://www.linkedin.com/in/devcaiquesilva/" target="_blank" class="contact-link">
+        <span class="cl-icon">💼</span>
+        linkedin.com/in/devcaiquesilva
       </a>
     </div>
   </div>
@@ -376,10 +534,9 @@
 
 <footer>
   <p>&copy; 2026 Caique Silva &mdash; Todos os direitos reservados.</p>
-  <p>Built with &#x2615; &amp; &#x1F916; in Brazil</p>
 </footer>
 
-<div class="snackbar" id="snackbar">E-mail copiado!</div>
+<div class="snackbar" id="snackbar">E-mail copiado para a Área de Transferência!</div>
 
 <script>
   function showSnackbar() {
@@ -392,7 +549,9 @@
     e.preventDefault();
     var email = 'devcaiquesilva@gmail.com';
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(showSnackbar).catch(function() { fallbackCopy(email); });
+      navigator.clipboard.writeText(email).then(showSnackbar).catch(function() {
+        fallbackCopy(email);
+      });
     } else {
       fallbackCopy(email);
     }
@@ -407,19 +566,28 @@
     document.body.appendChild(ta);
     ta.focus();
     ta.select();
-    try { document.execCommand('copy'); showSnackbar(); } catch(e) {}
+    try {
+      document.execCommand('copy');
+      showSnackbar();
+    } catch(e) {}
     document.body.removeChild(ta);
   }
 
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.hero .fade-in').forEach(function(el) {
+    el.classList.add('visible');
+  });
 </script>
 </body>
 </html>
