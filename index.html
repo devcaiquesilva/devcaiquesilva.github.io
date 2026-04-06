@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caique Silva &mdash; Developer</title>
+<title>Caique Silva &mdash; Desenvolvedor</title>
 <style>
   :root {
     --bg: #070d1a;
@@ -156,6 +156,41 @@
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  /* SNACKBAR */
+  .snackbar {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bg3);
+    border: 1px solid var(--border-bright);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+  .snackbar::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+  }
+  .snackbar.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
   @media (max-width: 768px) {
     .hero { padding: 7rem 1.5rem 3rem; }
     .container { padding: 3rem 1.5rem; }
@@ -164,6 +199,7 @@
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
     .projects-grid, .exp-grid { grid-template-columns: 1fr; }
+    .span-2 { grid-column: span 1 !important; }
     .contact-link { min-width: auto; width: 100%; }
   }
 </style>
@@ -184,7 +220,7 @@
 <!-- HERO -->
 <section class="hero" id="sobre">
   <div class="hero-content">
-    <div class="hero-tag">Desenvolvedor Mobile &amp; Backend &middot; 23 anos</div>
+    <div class="hero-tag">Desenvolvedor de Software &amp; TI &middot; 23 anos</div>
     <h1>
       Caique<br>
       <span class="name-highlight">Silva</span><span class="cursor-blink"></span>
@@ -373,7 +409,7 @@
   <div class="projects-grid">
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Kuroda Ads Display</div>
       <div class="project-desc">Player de mídia digital para exibição de anúncios. App Windows com splash animado, fullscreen, API Node.js em servidor Linux e sincronização de itens via Shell Script (md5sum) com o MGV7.</div>
       <div class="project-tags">
@@ -382,7 +418,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Kuroda Ads Admin</div>
       <div class="project-desc">Painel administrativo web e mobile para gestão de campanhas, mídias e agendamentos. Integrado ao sistema de displays em tempo real.</div>
       <div class="project-tags">
@@ -391,22 +427,14 @@
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-org kuroda">◆ Kuroda</div>
+      <div class="project-org kuroda">◆ M.S. Kuroda</div>
       <div class="project-name">Separador B2B</div>
-      <div class="project-desc">Sistema de separação de pedidos com controle de estoque e fluxo completo. Impressão de pedidos com um clique no celular via API Node.js.</div>
+      <div class="project-desc">Sistema de Separação de Pedidos para mercado B2B com controle de estoque,scan de produtos e fluxo de separação completo. Impressão de pedidos com um clique no celular via API Node.js.</div>
       <div class="project-tags">
         <span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">Node.js</span><span class="tag">Linux</span>
       </div>
     </div>
 
-    <div class="project-card fade-in">
-      <div class="project-org kuroda">◆ Kuroda</div>
-      <div class="project-name">Kuroda Security</div>
-      <div class="project-desc">Solução de segurança e controle de acesso para o ambiente Kuroda. Monitoramento, autenticação e gestão de permissões corporativas.</div>
-      <div class="project-tags">
-        <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">Auth</span>
-      </div>
-    </div>
 
     <div class="project-card fade-in">
       <div class="project-org meloz">◆ MELOZ</div>
@@ -436,12 +464,12 @@
     </div>
 
     <!-- MYSTERY -->
-    <div class="project-card fade-in" style="position:relative;min-height:200px;border-color:rgba(26,110,245,0.3);background:rgba(7,13,30,0.9);">
+    <div class="project-card fade-in span-2" style="position:relative;min-height:200px;border-color:rgba(26,110,245,0.3);background:rgba(7,13,30,0.9);grid-column:span 2;">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1a6ef5,#00c8ff);"></div>
       <div class="mystery-blur">
         <div class="project-org">◆ Em breve</div>
         <div class="project-name">NXFintech</div>
-        <div class="project-desc">Plataforma fintech com sinais para mercado futuro, análise técnica por IA e execução automatizada de operações na B3.</div>
+        <div class="project-desc">Uma Fintech em desenvolvimento.</div>
         <div class="project-tags">
           <span class="tag">Flutter</span><span class="tag">IA</span><span class="tag">B3</span><span class="tag">Node.js</span>
         </div>
@@ -462,7 +490,7 @@
 <section class="contact-section" id="contato">
   <div class="contact-inner">
     <div class="contact-text fade-in">
-      <h2>Vamos construir<br>algo juntos.</h2>
+      <h2>Vamos construir<br>algo juntos!</h2>
       <p>Aberto a projetos freelance, consultorias e parcerias em produtos digitais e automações com IA.</p>
     </div>
     <div class="contact-links fade-in">
@@ -470,7 +498,7 @@
         <span class="cl-icon">💬</span>
         WhatsApp — +55 (19) 99981-9875
       </a>
-      <a href="m&#97;ilto&#58;devcaiquesilva&#64;gmail&#46;com" class="contact-link">
+      <a href="#" onclick="copyEmail(event)" class="contact-link">
         <span class="cl-icon">✉️</span>
         devcaiquesilva@gmail.com
       </a>
@@ -488,10 +516,45 @@
 
 <footer>
   <p>&copy; 2026 Caique Silva &mdash; Todos os direitos reservados.</p>
-</style>
 </footer>
 
+<div class="snackbar" id="snackbar">E-mail copiado para a Área de Transferência!</div>
+
 <script>
+  function showSnackbar() {
+    var sb = document.getElementById('snackbar');
+    sb.classList.add('show');
+    setTimeout(function() { sb.classList.remove('show'); }, 2500);
+  }
+
+  function copyEmail(e) {
+    e.preventDefault();
+    var email = 'devcaiquesilva@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(showSnackbar).catch(function() {
+        fallbackCopy(email);
+      });
+    } else {
+      fallbackCopy(email);
+    }
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showSnackbar();
+    } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -500,8 +563,13 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.hero .fade-in').forEach(function(el) {
+    el.classList.add('visible');
+  });
 </script>
 </body>
 </html>
