@@ -256,7 +256,7 @@ console.log('Todos os testes passaram.');
 - [ ] **Step 3: Rodar os testes e confirmar que passam**
 
 Run: `cd devcaiquesilva.github.io && node tests/wizard-logic.test.js`
-Expected: imprime uma linha `✓` para cada um dos 11 testes e termina com `Todos os testes passaram.` (exit code 0). Se algum `assert` falhar, o script para com um stack trace do `AssertionError` — nesse caso revise a função correspondente antes de seguir.
+Expected: imprime uma linha `✓` para cada um dos 10 testes e termina com `Todos os testes passaram.` (exit code 0). Se algum `assert` falhar, o script para com um stack trace do `AssertionError` — nesse caso revise a função correspondente antes de seguir.
 
 - [ ] **Step 4: Commit**
 
