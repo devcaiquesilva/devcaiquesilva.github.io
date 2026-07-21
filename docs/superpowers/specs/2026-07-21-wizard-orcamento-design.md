@@ -1,7 +1,7 @@
 # Wizard de orçamento conversacional — design
 
 **Data:** 2026-07-21
-**Status:** aprovado, pronto para plano de implementação
+**Status:** implementado e verificado manualmente
 
 ## Contexto
 
