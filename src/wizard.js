@@ -215,6 +215,18 @@
     goNext();
   });
 
+  /* ===== SLIDER DE INVESTIMENTO ===== */
+  function bindInvestSlider() {
+    var range = document.getElementById('wizardInvestRange');
+    var valueEl = document.getElementById('wizardInvestValue');
+    function update() {
+      state.investimento = parseInt(range.value, 10);
+      valueEl.textContent = Logic.formatCurrency(state.investimento);
+    }
+    range.addEventListener('input', update);
+    update();
+  }
+
   /* ===== INIT ===== */
   renderTypeGrid();
   renderPrazoGrid();
@@ -222,6 +234,7 @@
   bindPrazoEvents();
   bindDescricaoEvents();
   bindContatoEvents();
+  bindInvestSlider();
   updateStepLabels();
   showStep(currentIndex);
 
