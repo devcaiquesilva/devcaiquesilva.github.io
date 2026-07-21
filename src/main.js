@@ -176,7 +176,7 @@
       var nome = (fd.get('Nome') || '').toString().trim();
       fd.append('_subject', '💙 Nova ideia de projeto — ' + (nome || 'cliente pelo site'));
 
-      fetch('https://formsubmit.co/ajax/devcaiquesilva@gmail.com', {
+      fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
         method: 'POST',
         body: fd,
         headers: { 'Accept': 'application/json' }
