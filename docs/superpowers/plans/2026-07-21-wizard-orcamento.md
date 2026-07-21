@@ -613,6 +613,7 @@ git commit -m "feat: adiciona estilos do wizard de orcamento"
 
   var steps = Logic.getStepOrder(null);
   var currentIndex = 0;
+  var lastRenderedTipo = null;
 
   var backBtn = document.getElementById('wizardBackBtn');
   var nextBtn = document.getElementById('wizardNextBtn');
@@ -738,11 +739,12 @@ git commit -m "feat: adiciona estilos do wizard de orcamento"
   function goNext() {
     if (!isStepValid(currentIndex)) { shakeCurrentStep(); return; }
 
-    if (steps[currentIndex] === 'tipo') {
+    if (steps[currentIndex] === 'tipo' && state.tipo !== lastRenderedTipo) {
       recomputeSteps();
       renderBranchSteps(state.tipo);
       bindBranchEvents();
       updateStepLabels();
+      lastRenderedTipo = state.tipo;
     }
 
     currentIndex++;
@@ -839,6 +841,7 @@ Checklist manual (sem isso passar, não avançar para a Task 5):
 8. Clicar "Voltar" em qualquer tela retorna à anterior mantendo as respostas.
 9. Voltar até a tela 1 e escolher "Ainda não sei" → ao avançar, pula direto para a tela de descrição (sem perguntas de branch).
 10. Repetir o passo 3 escolhendo cada um dos outros 5 tipos (Site institucional, Site pessoal, Landing page, Aplicativo, Sistema/plataforma) e confirmar que as perguntas de branch corretas aparecem (conferir contra a tabela da spec).
+11. **Round-trip sem trocar o tipo:** escolher "Loja virtual", responder as duas perguntas de branch, clicar "Voltar" duas vezes até a tela 1 (sem trocar a seleção) e clicar "Próximo" de novo. Expected: as duas perguntas de branch aparecem com as respostas anteriores ainda marcadas (não voltam em branco). Esse é o guard `state.tipo !== lastRenderedTipo` em `goNext()` — sem ele, `renderBranchSteps` recria os cards do zero e perde a marcação visual mesmo com `state.branchAnswers` intacto.
 
 - [ ] **Step 3: Commit**
 
@@ -1134,6 +1137,7 @@ Em `src/wizard.js`, logo antes do comentário `/* ===== INIT ===== */`, inserir 
         if (input) { input.checked = true; input.closest('.type-card').classList.add('selected'); }
       });
       updateStepLabels();
+      lastRenderedTipo = state.tipo;
     }
 
     document.getElementById('wizardDescricao').value = state.descricao;
@@ -1160,11 +1164,12 @@ Em `goNext()` e `goBack()` (Task 4), adicionar `saveProgress();` ao final de cad
   function goNext() {
     if (!isStepValid(currentIndex)) { shakeCurrentStep(); return; }
 
-    if (steps[currentIndex] === 'tipo') {
+    if (steps[currentIndex] === 'tipo' && state.tipo !== lastRenderedTipo) {
       recomputeSteps();
       renderBranchSteps(state.tipo);
       bindBranchEvents();
       updateStepLabels();
+      lastRenderedTipo = state.tipo;
     }
 
     currentIndex++;
