@@ -52,7 +52,7 @@
         Pode ser um site para a sua empresa, uma loja virtual, um aplicativo, um sistema ou só uma ideia que ainda está na cabeça. Você não precisa entender de tecnologia — essa parte é comigo. Escreve do seu jeito que eu cuido do resto.
       </p>
       <ol class="briefing-steps">
-        <li><span class="step-num">1</span><span><strong>Você envia sua ideia</strong> pelo formulário ao lado, com as suas palavras.</span></li>
+        <li><span class="step-num">1</span><span><strong>Você me conta sua ideia</strong> respondendo umas perguntinhas rápidas.</span></li>
         <li><span class="step-num">2</span><span><strong>Eu leio com atenção</strong> e te retorno em até 24h, já com perguntas e sugestões.</span></li>
         <li><span class="step-num">3</span><span><strong>Conversamos e monto uma proposta</strong> sob medida para o seu prazo e o seu bolso.</span></li>
       </ol>
@@ -63,119 +63,109 @@
       </div>
     </div>
 
-    <div class="briefing-card fade-in">
-      <form id="briefingForm" action="https://formsubmit.co/8bccbc0af1756383496ac8812fae2780" method="POST">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://devcaiquesilva.github.io/orcamento.html">
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+    <div class="briefing-card wizard-card fade-in" id="wizardCard">
+      <div class="wizard-progress" aria-hidden="true"><div class="wizard-progress-bar" id="wizardProgressBar"></div></div>
 
-        <fieldset class="form-group">
-          <legend class="form-label">O que você quer criar?</legend>
-          <div class="type-grid">
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Site para empresa" required>
-              <span class="tc-emoji">🏢</span>
-              <span><span class="tc-title">Site para empresa</span><span class="tc-desc">Institucional, com a cara do seu negócio</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Site pessoal" required>
-              <span class="tc-emoji">👤</span>
-              <span><span class="tc-title">Site pessoal</span><span class="tc-desc">Portfólio, currículo ou marca pessoal</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Loja virtual" required>
-              <span class="tc-emoji">🛒</span>
-              <span><span class="tc-title">Loja virtual</span><span class="tc-desc">Para vender seus produtos online</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Landing page" required>
-              <span class="tc-emoji">📣</span>
-              <span><span class="tc-title">Landing page</span><span class="tc-desc">Página única para divulgar e captar clientes</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Aplicativo (app)" required>
-              <span class="tc-emoji">📱</span>
-              <span><span class="tc-title">Aplicativo</span><span class="tc-desc">App para Android e iOS</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Sistema / plataforma" required>
-              <span class="tc-emoji">⚙️</span>
-              <span><span class="tc-title">Sistema / plataforma</span><span class="tc-desc">Gestão, painéis, área de login…</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Automação com IA" required>
-              <span class="tc-emoji">🤖</span>
-              <span><span class="tc-title">Automação com IA</span><span class="tc-desc">Chatbots, agentes e integrações</span></span>
-            </label>
-            <label class="type-card">
-              <input type="radio" name="Tipo de projeto" value="Ainda não sei" required>
-              <span class="tc-emoji">💡</span>
-              <span><span class="tc-title">Ainda não sei</span><span class="tc-desc">Sem problema! Me conta que eu te oriento</span></span>
-            </label>
-          </div>
-        </fieldset>
+      <button type="button" class="wizard-summary-chip" id="wizardSummaryChip" aria-expanded="false" aria-controls="wizardSummaryPanel">
+        <span>Ver meu briefing</span> <span class="wsc-arrow" aria-hidden="true">▾</span>
+      </button>
 
-        <div class="form-group">
-          <label class="form-label" for="bfDescricao">Me conta um pouco da sua ideia</label>
-          <textarea class="form-textarea" id="bfDescricao" name="Descrição da ideia" minlength="10" required placeholder="Ex.: Tenho uma confeitaria e queria um site com os meus doces, preços e um botão para os clientes fazerem pedidos pelo WhatsApp…"></textarea>
-          <div class="form-hint">Escreve do seu jeito, sem termos técnicos. 🙂</div>
-        </div>
+      <div class="wizard-layout">
+        <div class="wizard-main">
 
-        <div class="form-row form-group">
-          <div>
-            <label class="form-label" for="bfPrazo">Pra quando você precisa?</label>
-            <select class="form-select" id="bfPrazo" name="Prazo" required>
-              <option value="" disabled selected hidden>Selecione…</option>
-              <option>O quanto antes</option>
-              <option>Em até 1 mês</option>
-              <option>De 1 a 3 meses</option>
-              <option>Sem pressa, estou planejando</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label" for="bfInvest">Quanto pensa em investir? <span class="opt">(opcional)</span></label>
-            <select class="form-select" id="bfInvest" name="Investimento">
-              <option selected>Ainda não sei / prefiro conversar</option>
-              <option>Até R$ 1.000</option>
-              <option>R$ 1.000 a R$ 3.000</option>
-              <option>R$ 3.000 a R$ 10.000</option>
-              <option>Acima de R$ 10.000</option>
-            </select>
-          </div>
-        </div>
+          <form id="wizardForm" novalidate>
+            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
 
-        <div class="form-row form-group">
-          <div>
-            <label class="form-label" for="bfNome">Seu nome</label>
-            <input class="form-input" id="bfNome" type="text" name="Nome" autocomplete="name" required placeholder="Como posso te chamar?">
-          </div>
-          <div>
-            <label class="form-label" for="bfZap">Seu WhatsApp</label>
-            <input class="form-input" id="bfZap" type="tel" inputmode="tel" name="WhatsApp" autocomplete="tel" required placeholder="(19) 99999-9999">
+            <section class="wizard-step" data-step="tipo">
+              <div class="wizard-step-label"></div>
+              <h2 class="wizard-question">O que você quer criar?</h2>
+              <div class="type-grid" id="wizardTypeGrid"></div>
+            </section>
+
+            <div id="wizardBranchSteps"></div>
+
+            <section class="wizard-step" data-step="descricao" hidden>
+              <div class="wizard-step-label"></div>
+              <h2 class="wizard-question">Me conta um pouco da sua ideia</h2>
+              <textarea class="form-textarea" id="wizardDescricao" placeholder="Ex.: Tenho uma confeitaria e queria um site com os meus doces, preços e um botão para os clientes fazerem pedidos pelo WhatsApp…"></textarea>
+              <div class="form-hint">Escreve do seu jeito, sem termos técnicos. 🙂</div>
+            </section>
+
+            <section class="wizard-step" data-step="prazo" hidden>
+              <div class="wizard-step-label"></div>
+              <h2 class="wizard-question">Pra quando você precisa?</h2>
+              <div class="type-grid wizard-choice-grid" id="wizardPrazoGrid"></div>
+            </section>
+
+            <section class="wizard-step" data-step="investimento" hidden>
+              <div class="wizard-step-label"></div>
+              <h2 class="wizard-question">Quanto pensa em investir?</h2>
+              <div class="wizard-slider-wrap">
+                <div class="wizard-slider-value" id="wizardInvestValue">R$ 2.000</div>
+                <input type="range" class="wizard-slider" id="wizardInvestRange" min="500" max="10000" step="100" value="2000">
+                <div class="wizard-slider-scale"><span>R$ 500</span><span>R$ 10.000+</span></div>
+              </div>
+              <div class="form-hint">Arraste até o valor que faz sentido pra você — é só uma referência, dá pra ajustar depois. 🙂</div>
+            </section>
+
+            <section class="wizard-step" data-step="contato" hidden>
+              <div class="wizard-step-label"></div>
+              <h2 class="wizard-question">Pra eu poder te responder</h2>
+              <div class="form-group">
+                <label class="form-label" for="wizardNome">Seu nome</label>
+                <input class="form-input" id="wizardNome" type="text" autocomplete="name" placeholder="Como posso te chamar?">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="wizardZap">Seu WhatsApp</label>
+                <input class="form-input" id="wizardZap" type="tel" inputmode="tel" autocomplete="tel" placeholder="(19) 99999-9999">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="wizardEmail">Seu e-mail <span class="opt">(opcional)</span></label>
+                <input class="form-input" id="wizardEmail" type="email" autocomplete="email" placeholder="voce@email.com">
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="revisao" hidden>
+              <div class="wizard-step-label">Última etapa</div>
+              <h2 class="wizard-question">Confere se ficou tudo certo</h2>
+              <ul class="wizard-summary-list wizard-summary-list--inline" id="wizardReviewList"></ul>
+              <div class="form-feedback" id="wizardError" role="alert" hidden>
+                Ops! Não consegui enviar agora. 😕 Tenta de novo em instantes — ou, se preferir, <a id="wizardWaFallback" href="https://wa.me/5519999819875" target="_blank" rel="noopener">me manda direto no WhatsApp clicando aqui</a>.
+              </div>
+            </section>
+
+            <div class="wizard-nav">
+              <button type="button" class="btn-outline wizard-btn-back" id="wizardBackBtn" hidden>← Voltar</button>
+              <button type="button" class="btn-primary wizard-btn-next" id="wizardNextBtn">Próximo →</button>
+              <button type="submit" class="btn-primary btn-send wizard-btn-submit" id="wizardSubmitBtn" hidden>Enviar minha ideia 🚀</button>
+            </div>
+
+            <p class="form-privacy">🔒 Suas informações chegam direto no meu e-mail e não são compartilhadas com ninguém.</p>
+          </form>
+
+          <div class="briefing-success" id="briefingSuccess" aria-live="polite" hidden>
+            <div class="bs-emoji">🎉</div>
+            <h3>Ideia recebida!</h3>
+            <p>Obrigado, <span id="bsNome">!</span> Vou ler tudo com atenção e te retorno em até 24 horas. Se quiser adiantar a conversa, é só me chamar no WhatsApp:</p>
+            <a class="btn-whatsapp" href="https://wa.me/5519999819875?text=Ol%C3%A1%2C%20Caique!%20Acabei%20de%20enviar%20minha%20ideia%20pelo%20site%20%F0%9F%98%8A" target="_blank" rel="noopener">💬 Chamar no WhatsApp</a>
+            <button type="button" class="bs-again" id="briefingAgain">← enviar outra ideia</button>
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="bfEmail">Seu e-mail <span class="opt">(opcional)</span></label>
-          <input class="form-input" id="bfEmail" type="email" name="E-mail" autocomplete="email" placeholder="voce@email.com">
-        </div>
-
-        <div class="form-feedback" id="briefingError" role="alert" hidden>
-          Ops! Não consegui enviar agora. 😕 Tenta de novo em instantes — ou, se preferir, <a id="waFallback" href="https://wa.me/5519999819875" target="_blank" rel="noopener">me manda direto no WhatsApp clicando aqui</a>.
-        </div>
-
-        <button type="submit" class="btn-primary btn-send" id="briefingSubmit">Enviar minha ideia 🚀</button>
-        <p class="form-privacy">🔒 Suas informações chegam direto no meu e-mail e não são compartilhadas com ninguém.</p>
-      </form>
-
-      <div class="briefing-success" id="briefingSuccess" aria-live="polite" hidden>
-        <div class="bs-emoji">🎉</div>
-        <h3>Ideia recebida!</h3>
-        <p>Obrigado, <span id="bsNome">!</span> Vou ler tudo com atenção e te retorno em até 24 horas. Se quiser adiantar a conversa, é só me chamar no WhatsApp:</p>
-        <a class="btn-whatsapp" href="https://wa.me/5519999819875?text=Ol%C3%A1%2C%20Caique!%20Acabei%20de%20enviar%20minha%20ideia%20pelo%20site%20%F0%9F%98%8A" target="_blank" rel="noopener">💬 Chamar no WhatsApp</a>
-        <button type="button" class="bs-again" id="briefingAgain">← enviar outra ideia</button>
+        <aside class="wizard-summary-panel" id="wizardSummaryPanel" aria-live="polite">
+          <h3>✨ Seu briefing até agora</h3>
+          <ul class="wizard-summary-list" id="wizardSummaryList">
+            <li class="wizard-summary-empty">Vai preenchendo que eu vou montando aqui pra você conferir. 👀</li>
+          </ul>
+        </aside>
       </div>
+
+      <noscript>
+        <style>.wizard-progress, .wizard-summary-chip, .wizard-layout { display: none !important; }</style>
+        <div class="form-feedback" style="margin:1.5rem">
+          Esse formulário precisa de JavaScript pra funcionar. Sem problema — <a href="https://wa.me/5519999819875" target="_blank" rel="noopener">me chama direto no WhatsApp</a> que eu te ajudo por lá. 😊
+        </div>
+      </noscript>
     </div>
 
   </div>
@@ -226,6 +216,8 @@
   <style>.fade-in { opacity: 1; transform: none; }</style>
 </noscript>
 
+<script src="src/wizard-logic.js"></script>
+<script src="src/wizard.js"></script>
 <script src="src/main.js"></script>
 </body>
 </html>
