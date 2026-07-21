@@ -797,9 +797,9 @@ git commit -m "feat: adiciona estilos do wizard de orcamento"
   }
 
   function bindContatoEvents() {
-    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; });
-    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; });
-    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; });
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; updateSummary(); });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; updateSummary(); });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; updateSummary(); });
   }
 
   /* ===== NAVEGACAO POR TECLADO ===== */
@@ -1041,6 +1041,26 @@ E em `bindInvestSlider` (Task 5), na função `update`, adicionar a chamada:
       valueEl.textContent = Logic.formatCurrency(state.investimento);
       updateSummary();
     }
+```
+
+Também em `bindContatoEvents()` (Task 4), adicionar `updateSummary();` aos três listeners (Nome, WhatsApp, E-mail) — sem isso, o painel lateral só mostra esses três campos quando o cliente chega na tela de revisão, quebrando a promessa do "resumo ao vivo" nessa etapa. Localizar:
+
+```javascript
+  function bindContatoEvents() {
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; });
+  }
+```
+
+Substituir por:
+
+```javascript
+  function bindContatoEvents() {
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; updateSummary(); });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; updateSummary(); });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; updateSummary(); });
+  }
 ```
 
 Por fim, no bloco `/* ===== INIT ===== */` (já modificado pela Task 5), localizar:
