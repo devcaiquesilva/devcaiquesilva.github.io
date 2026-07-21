@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1a6ef5">
+<title>Orçamento — Caique Silva</title>
+<meta name="description" content="Me conta a sua ideia — site, app, sistema ou automação — e receba um orçamento gratuito em até 24h, sem compromisso.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://devcaiquesilva.github.io/orcamento.html">
+<meta property="og:title" content="Orçamento — Caique Silva">
+<meta property="og:description" content="Me conta a sua ideia — site, app, sistema ou automação — e receba um orçamento gratuito em até 24h, sem compromisso.">
+<meta property="og:image" content="https://devcaiquesilva.github.io/src/devcaiquesilva.jpeg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav aria-label="Navegação principal">
+  <a class="nav-logo" href="index.html"><span>~/</span>devcaiquesilva</a>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+    <span class="nt-bar"></span><span class="nt-bar"></span><span class="nt-bar"></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">início</a></li>
+    <li><a href="tecnologias.html">tecnologias</a></li>
+    <li><a href="experiencia.html">experiência</a></li>
+    <li><a href="projetos.html">projetos</a></li>
+    <li><a href="orcamento.html" class="nav-cta active">Pedir orçamento</a></li>
+  </ul>
+</nav>
+
+<main id="conteudo">
+
+<!-- ORCAMENTO / BRIEFING -->
+<section class="briefing-section page-first" id="orcamento" aria-labelledby="orcamento-title">
+  <div class="glow glow-c" aria-hidden="true"></div>
+  <div class="briefing-inner">
+
+    <div class="briefing-intro fade-in">
+      <div class="section-label">// seu projeto</div>
+      <h1 class="section-title" id="orcamento-title">Me conta a sua ideia 💙</h1>
+      <p class="briefing-text">
+        Pode ser um site para a sua empresa, uma loja virtual, um aplicativo, um sistema ou só uma ideia que ainda está na cabeça. Você não precisa entender de tecnologia — essa parte é comigo. Escreve do seu jeito que eu cuido do resto.
+      </p>
+      <ol class="briefing-steps">
+        <li><span class="step-num">1</span><span><strong>Você envia sua ideia</strong> pelo formulário ao lado, com as suas palavras.</span></li>
+        <li><span class="step-num">2</span><span><strong>Eu leio com atenção</strong> e te retorno em até 24h, já com perguntas e sugestões.</span></li>
+        <li><span class="step-num">3</span><span><strong>Conversamos e monto uma proposta</strong> sob medida para o seu prazo e o seu bolso.</span></li>
+      </ol>
+      <div class="briefing-chips">
+        <span class="chip">✅ Sem compromisso</span>
+        <span class="chip">⚡ Resposta em até 24h</span>
+        <span class="chip">💰 Orçamento gratuito</span>
+      </div>
+    </div>
+
+    <div class="briefing-card fade-in">
+      <form id="briefingForm" action="https://formsubmit.co/devcaiquesilva@gmail.com" method="POST">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://devcaiquesilva.github.io/orcamento.html">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+
+        <fieldset class="form-group">
+          <legend class="form-label">O que você quer criar?</legend>
+          <div class="type-grid">
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Site para empresa" required>
+              <span class="tc-emoji">🏢</span>
+              <span><span class="tc-title">Site para empresa</span><span class="tc-desc">Institucional, com a cara do seu negócio</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Site pessoal" required>
+              <span class="tc-emoji">👤</span>
+              <span><span class="tc-title">Site pessoal</span><span class="tc-desc">Portfólio, currículo ou marca pessoal</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Loja virtual" required>
+              <span class="tc-emoji">🛒</span>
+              <span><span class="tc-title">Loja virtual</span><span class="tc-desc">Para vender seus produtos online</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Landing page" required>
+              <span class="tc-emoji">📣</span>
+              <span><span class="tc-title">Landing page</span><span class="tc-desc">Página única para divulgar e captar clientes</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Aplicativo (app)" required>
+              <span class="tc-emoji">📱</span>
+              <span><span class="tc-title">Aplicativo</span><span class="tc-desc">App para Android e iOS</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Sistema / plataforma" required>
+              <span class="tc-emoji">⚙️</span>
+              <span><span class="tc-title">Sistema / plataforma</span><span class="tc-desc">Gestão, painéis, área de login…</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Automação com IA" required>
+              <span class="tc-emoji">🤖</span>
+              <span><span class="tc-title">Automação com IA</span><span class="tc-desc">Chatbots, agentes e integrações</span></span>
+            </label>
+            <label class="type-card">
+              <input type="radio" name="Tipo de projeto" value="Ainda não sei" required>
+              <span class="tc-emoji">💡</span>
+              <span><span class="tc-title">Ainda não sei</span><span class="tc-desc">Sem problema! Me conta que eu te oriento</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label class="form-label" for="bfDescricao">Me conta um pouco da sua ideia</label>
+          <textarea class="form-textarea" id="bfDescricao" name="Descrição da ideia" minlength="10" required placeholder="Ex.: Tenho uma confeitaria e queria um site com os meus doces, preços e um botão para os clientes fazerem pedidos pelo WhatsApp…"></textarea>
+          <div class="form-hint">Escreve do seu jeito, sem termos técnicos. 🙂</div>
+        </div>
+
+        <div class="form-row form-group">
+          <div>
+            <label class="form-label" for="bfPrazo">Pra quando você precisa?</label>
+            <select class="form-select" id="bfPrazo" name="Prazo" required>
+              <option value="" disabled selected hidden>Selecione…</option>
+              <option>O quanto antes</option>
+              <option>Em até 1 mês</option>
+              <option>De 1 a 3 meses</option>
+              <option>Sem pressa, estou planejando</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" for="bfInvest">Quanto pensa em investir? <span class="opt">(opcional)</span></label>
+            <select class="form-select" id="bfInvest" name="Investimento">
+              <option selected>Ainda não sei / prefiro conversar</option>
+              <option>Até R$ 1.000</option>
+              <option>R$ 1.000 a R$ 3.000</option>
+              <option>R$ 3.000 a R$ 10.000</option>
+              <option>Acima de R$ 10.000</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row form-group">
+          <div>
+            <label class="form-label" for="bfNome">Seu nome</label>
+            <input class="form-input" id="bfNome" type="text" name="Nome" autocomplete="name" required placeholder="Como posso te chamar?">
+          </div>
+          <div>
+            <label class="form-label" for="bfZap">Seu WhatsApp</label>
+            <input class="form-input" id="bfZap" type="tel" inputmode="tel" name="WhatsApp" autocomplete="tel" required placeholder="(19) 99999-9999">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bfEmail">Seu e-mail <span class="opt">(opcional)</span></label>
+          <input class="form-input" id="bfEmail" type="email" name="E-mail" autocomplete="email" placeholder="voce@email.com">
+        </div>
+
+        <div class="form-feedback" id="briefingError" role="alert" hidden>
+          Ops! Não consegui enviar agora. 😕 Tenta de novo em instantes — ou, se preferir, <a id="waFallback" href="https://wa.me/5519999819875" target="_blank" rel="noopener">me manda direto no WhatsApp clicando aqui</a>.
+        </div>
+
+        <button type="submit" class="btn-primary btn-send" id="briefingSubmit">Enviar minha ideia 🚀</button>
+        <p class="form-privacy">🔒 Suas informações chegam direto no meu e-mail e não são compartilhadas com ninguém.</p>
+      </form>
+
+      <div class="briefing-success" id="briefingSuccess" aria-live="polite" hidden>
+        <div class="bs-emoji">🎉</div>
+        <h3>Ideia recebida!</h3>
+        <p>Obrigado, <span id="bsNome">!</span> Vou ler tudo com atenção e te retorno em até 24 horas. Se quiser adiantar a conversa, é só me chamar no WhatsApp:</p>
+        <a class="btn-whatsapp" href="https://wa.me/5519999819875?text=Ol%C3%A1%2C%20Caique!%20Acabei%20de%20enviar%20minha%20ideia%20pelo%20site%20%F0%9F%98%8A" target="_blank" rel="noopener">💬 Chamar no WhatsApp</a>
+        <button type="button" class="bs-again" id="briefingAgain">← enviar outra ideia</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact-section" id="contato" aria-labelledby="contato-title">
+  <div class="contact-inner">
+    <div class="contact-text fade-in">
+      <h2 id="contato-title">Prefere falar<br>direto comigo?</h2>
+      <p>Aberto a projetos freelance, consultorias e parcerias em produtos digitais e automações com IA.</p>
+    </div>
+    <div class="contact-links">
+      <a href="https://wa.me/5519999819875" target="_blank" class="contact-link fade-in">
+        <span class="cl-icon">💬</span>
+        WhatsApp — +55 (19) 99981-9875
+      </a>
+      <a href="#" onclick="copyEmail(event)" class="contact-link fade-in">
+        <span class="cl-icon">✉️</span>
+        devcaiquesilva@gmail.com
+      </a>
+      <a href="https://github.com/devcaiquesilva" target="_blank" class="contact-link fade-in">
+        <span class="cl-icon">⌥</span>
+        github.com/devcaiquesilva
+      </a>
+      <a href="https://www.linkedin.com/in/devcaiquesilva/" target="_blank" class="contact-link fade-in">
+        <span class="cl-icon">💼</span>
+        linkedin.com/in/devcaiquesilva
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Caique Silva &mdash; Todos os direitos reservados.</p>
+  <ul class="footer-nav">
+    <li><a href="index.html">início</a></li>
+    <li><a href="projetos.html">projetos</a></li>
+    <li><a href="#contato">contato</a></li>
+  </ul>
+</footer>
+
+<div class="snackbar" id="snackbar" role="status" aria-live="polite">E-mail copiado para a Área de Transferência!</div>
+
+<noscript>
+  <style>.fade-in { opacity: 1; transform: none; }</style>
+</noscript>
+
+<script src="src/main.js"></script>
+</body>
+</html>
