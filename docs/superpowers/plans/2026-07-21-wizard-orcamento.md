@@ -1107,7 +1107,7 @@ git commit -m "feat: adiciona resumo ao vivo do briefing (painel e chip mobile)"
 
 **Interfaces:**
 - Consumes: `state`, `steps`, `currentIndex`, `recomputeSteps`, `renderBranchSteps`, `bindBranchEvents`, `updateStepLabels`, `updateSummary` (todas já definidas nas Tasks 4 e 6).
-- Produces: `saveProgress()`, `loadProgress()`, `clearProgress()` — `saveProgress()` passa a ser chamada por `goNext()`, `goBack()` e por todos os handlers de campo; `clearProgress()` é consumida pela Task 8 (após envio bem-sucedido) e pelo botão "enviar outra" (Task 8).
+- Produces: `saveProgress()`, `loadProgress()`, `clearProgress()` — `saveProgress()` é chamada apenas por `goNext()` e `goBack()` (ao navegar entre telas), não a cada tecla digitada nos campos — decisão deliberada: proteger contra fechar a aba no meio de um passo já respondido é o que importa; exigir um save a cada input adicionaria escrita constante em disco sem benefício perceptível para o cliente. `clearProgress()` é consumida pela Task 8 (após envio bem-sucedido) e pelo botão "enviar outra" (Task 8).
 
 - [ ] **Step 1: Adicionar as funções de persistência**
 
