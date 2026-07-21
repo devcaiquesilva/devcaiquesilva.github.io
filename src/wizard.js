@@ -207,9 +207,9 @@
   }
 
   function bindContatoEvents() {
-    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; });
-    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; });
-    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; });
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; updateSummary(); });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; updateSummary(); });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; updateSummary(); });
   }
 
   /* ===== NAVEGACAO POR TECLADO ===== */
