@@ -17,6 +17,7 @@
 
   var steps = Logic.getStepOrder(null);
   var currentIndex = 0;
+  var lastRenderedTipo = null;
 
   var backBtn = document.getElementById('wizardBackBtn');
   var nextBtn = document.getElementById('wizardNextBtn');
@@ -142,11 +143,12 @@
   function goNext() {
     if (!isStepValid(currentIndex)) { shakeCurrentStep(); return; }
 
-    if (steps[currentIndex] === 'tipo') {
+    if (steps[currentIndex] === 'tipo' && state.tipo !== lastRenderedTipo) {
       recomputeSteps();
       renderBranchSteps(state.tipo);
       bindBranchEvents();
       updateStepLabels();
+      lastRenderedTipo = state.tipo;
     }
 
     currentIndex++;
