@@ -115,6 +115,8 @@
     submitBtn.hidden = !isLast;
 
     progressBar.style.width = (((index + 1) / steps.length) * 100) + '%';
+
+    if (stepId === 'revisao') renderReview();
   }
 
   function isStepValid(index) {
@@ -168,6 +170,7 @@
       state.tipo = e.target.value;
       document.querySelectorAll('#wizardTypeGrid .type-card').forEach(function (c) { c.classList.remove('selected'); });
       e.target.closest('.type-card').classList.add('selected');
+      updateSummary();
     });
   }
 
@@ -181,6 +184,7 @@
         state.branchAnswers[q.field] = e.target.value;
         section.querySelectorAll('.type-card').forEach(function (c) { c.classList.remove('selected'); });
         e.target.closest('.type-card').classList.add('selected');
+        updateSummary();
       });
     });
   }
@@ -191,12 +195,14 @@
       state.prazo = e.target.value;
       document.querySelectorAll('#wizardPrazoGrid .type-card').forEach(function (c) { c.classList.remove('selected'); });
       e.target.closest('.type-card').classList.add('selected');
+      updateSummary();
     });
   }
 
   function bindDescricaoEvents() {
     document.getElementById('wizardDescricao').addEventListener('input', function (e) {
       state.descricao = e.target.value;
+      updateSummary();
     });
   }
 
@@ -222,9 +228,53 @@
     function update() {
       state.investimento = parseInt(range.value, 10);
       valueEl.textContent = Logic.formatCurrency(state.investimento);
+      updateSummary();
     }
     range.addEventListener('input', update);
     update();
+  }
+
+  /* ===== RESUMO AO VIVO ===== */
+  function renderSummaryInto(listEl) {
+    var lines = Logic.buildSummaryLines(state);
+    listEl.innerHTML = '';
+    if (!lines.length) {
+      var empty = document.createElement('li');
+      empty.className = 'wizard-summary-empty';
+      empty.textContent = 'Vai preenchendo que eu vou montando aqui pra você conferir. 👀';
+      listEl.appendChild(empty);
+      return;
+    }
+    lines.forEach(function (l) {
+      var li = document.createElement('li');
+      li.className = 'wizard-summary-item';
+      var labelSpan = document.createElement('span');
+      labelSpan.className = 'wsi-label';
+      labelSpan.textContent = l.label;
+      var valueSpan = document.createElement('span');
+      valueSpan.className = 'wsi-value';
+      valueSpan.textContent = l.value;
+      li.appendChild(labelSpan);
+      li.appendChild(valueSpan);
+      listEl.appendChild(li);
+    });
+  }
+
+  function updateSummary() {
+    renderSummaryInto(document.getElementById('wizardSummaryList'));
+  }
+
+  function renderReview() {
+    renderSummaryInto(document.getElementById('wizardReviewList'));
+  }
+
+  function bindSummaryChip() {
+    var chip = document.getElementById('wizardSummaryChip');
+    var panel = document.getElementById('wizardSummaryPanel');
+    chip.addEventListener('click', function () {
+      var open = panel.classList.toggle('open');
+      chip.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   }
 
   /* ===== INIT ===== */
@@ -235,8 +285,10 @@
   bindDescricaoEvents();
   bindContatoEvents();
   bindInvestSlider();
+  bindSummaryChip();
   updateStepLabels();
   showStep(currentIndex);
+  updateSummary();
 
   nextBtn.addEventListener('click', goNext);
   backBtn.addEventListener('click', goBack);
