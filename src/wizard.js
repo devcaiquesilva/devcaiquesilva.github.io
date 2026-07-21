@@ -339,6 +339,61 @@
     currentIndex = Math.min(saved.currentIndex || 0, steps.length - 1);
   }
 
+  /* ===== ENVIO ===== */
+  var errorBox = document.getElementById('wizardError');
+  var successBox = document.getElementById('briefingSuccess');
+
+  function buildFormData() {
+    var fd = new FormData();
+    var honey = form.querySelector('.hp');
+    fd.append('_honey', honey ? honey.value : '');
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+    fd.append('_subject', '💙 Nova ideia de projeto — ' + (state.nome || 'cliente pelo site'));
+
+    fd.append('Tipo de projeto', state.tipo || '-');
+    Logic.getBranchQuestions(state.tipo).forEach(function (q) {
+      fd.append(q.field, state.branchAnswers[q.field] || '-');
+    });
+    fd.append('Descrição da ideia', state.descricao);
+    fd.append('Prazo', state.prazo || '-');
+    fd.append('Investimento', Logic.formatCurrency(state.investimento));
+    fd.append('Nome', state.nome);
+    fd.append('WhatsApp', state.whatsapp);
+    if (state.email) fd.append('E-mail', state.email);
+    return fd;
+  }
+
+  function submitWizard(e) {
+    e.preventDefault();
+    errorBox.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando… ⏳';
+
+    fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
+      method: 'POST',
+      body: buildFormData(),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function () {
+      clearProgress();
+      document.getElementById('bsNome').textContent = (state.nome || 'você') + '!';
+      form.hidden = true;
+      successBox.hidden = false;
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function () {
+      document.getElementById('wizardWaFallback').href = Logic.buildWhatsAppMessage(state);
+      errorBox.hidden = false;
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .finally(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar minha ideia 🚀';
+    });
+  }
+
   /* ===== INIT ===== */
   renderTypeGrid();
   renderPrazoGrid();
@@ -355,4 +410,11 @@
 
   nextBtn.addEventListener('click', goNext);
   backBtn.addEventListener('click', goBack);
+
+  form.addEventListener('submit', submitWizard);
+
+  document.getElementById('briefingAgain').addEventListener('click', function () {
+    clearProgress();
+    location.reload();
+  });
 })();
