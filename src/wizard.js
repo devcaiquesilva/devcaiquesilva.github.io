@@ -227,6 +227,9 @@
   function bindInvestSlider() {
     var range = document.getElementById('wizardInvestRange');
     var valueEl = document.getElementById('wizardInvestValue');
+    range.min = Logic.INVEST_MIN;
+    range.max = Logic.INVEST_MAX;
+    range.step = Logic.INVEST_STEP;
     function update() {
       state.investimento = parseInt(range.value, 10);
       valueEl.textContent = Logic.formatCurrency(state.investimento);
@@ -300,43 +303,45 @@
     try { saved = JSON.parse(raw); } catch (e) { return; }
     if (!saved || !saved.state) return;
 
-    state.tipo = saved.state.tipo || null;
-    state.branchAnswers = saved.state.branchAnswers || {};
-    state.descricao = saved.state.descricao || '';
-    state.prazo = saved.state.prazo || null;
-    state.investimento = typeof saved.state.investimento === 'number' ? saved.state.investimento : 2000;
-    state.nome = saved.state.nome || '';
-    state.whatsapp = saved.state.whatsapp || '';
-    state.email = saved.state.email || '';
+    try {
+      state.tipo = saved.state.tipo || null;
+      state.branchAnswers = saved.state.branchAnswers || {};
+      state.descricao = saved.state.descricao || '';
+      state.prazo = saved.state.prazo || null;
+      state.investimento = typeof saved.state.investimento === 'number' ? saved.state.investimento : 2000;
+      state.nome = saved.state.nome || '';
+      state.whatsapp = saved.state.whatsapp || '';
+      state.email = saved.state.email || '';
 
-    if (state.tipo) {
-      var typeInput = document.querySelector('#wizardTypeGrid input[value="' + state.tipo + '"]');
-      if (typeInput) { typeInput.checked = true; typeInput.closest('.type-card').classList.add('selected'); }
-      recomputeSteps();
-      renderBranchSteps(state.tipo);
-      bindBranchEvents();
-      Logic.getBranchQuestions(state.tipo).forEach(function (q, i) {
-        var answer = state.branchAnswers[q.field];
-        if (!answer) return;
-        var input = document.querySelector('#wizardBranchSteps [data-step="branch-' + i + '"] input[value="' + answer + '"]');
-        if (input) { input.checked = true; input.closest('.type-card').classList.add('selected'); }
-      });
-      updateStepLabels();
-      lastRenderedTipo = state.tipo;
-    }
+      if (state.tipo) {
+        var typeInput = document.querySelector('#wizardTypeGrid input[value="' + state.tipo + '"]');
+        if (typeInput) { typeInput.checked = true; typeInput.closest('.type-card').classList.add('selected'); }
+        recomputeSteps();
+        renderBranchSteps(state.tipo);
+        bindBranchEvents();
+        Logic.getBranchQuestions(state.tipo).forEach(function (q, i) {
+          var answer = state.branchAnswers[q.field];
+          if (!answer) return;
+          var input = document.querySelector('#wizardBranchSteps [data-step="branch-' + i + '"] input[value="' + answer + '"]');
+          if (input) { input.checked = true; input.closest('.type-card').classList.add('selected'); }
+        });
+        updateStepLabels();
+        lastRenderedTipo = state.tipo;
+      }
 
-    document.getElementById('wizardDescricao').value = state.descricao;
-    if (state.prazo) {
-      var prazoInput = document.querySelector('#wizardPrazoGrid input[value="' + state.prazo + '"]');
-      if (prazoInput) { prazoInput.checked = true; prazoInput.closest('.type-card').classList.add('selected'); }
-    }
-    document.getElementById('wizardInvestRange').value = state.investimento;
-    document.getElementById('wizardInvestValue').textContent = Logic.formatCurrency(state.investimento);
-    document.getElementById('wizardNome').value = state.nome;
-    document.getElementById('wizardZap').value = state.whatsapp;
-    document.getElementById('wizardEmail').value = state.email;
+      document.getElementById('wizardDescricao').value = state.descricao;
+      if (state.prazo) {
+        var prazoInput = document.querySelector('#wizardPrazoGrid input[value="' + state.prazo + '"]');
+        if (prazoInput) { prazoInput.checked = true; prazoInput.closest('.type-card').classList.add('selected'); }
+      }
+      document.getElementById('wizardInvestRange').value = state.investimento;
+      document.getElementById('wizardInvestValue').textContent = Logic.formatCurrency(state.investimento);
+      document.getElementById('wizardNome').value = state.nome;
+      document.getElementById('wizardZap').value = state.whatsapp;
+      document.getElementById('wizardEmail').value = state.email;
 
-    currentIndex = Math.min(saved.currentIndex || 0, steps.length - 1);
+      currentIndex = Math.min(saved.currentIndex || 0, steps.length - 1);
+    } catch (e) {}
   }
 
   /* ===== ENVIO ===== */
