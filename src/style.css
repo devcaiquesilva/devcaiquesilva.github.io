@@ -36,6 +36,7 @@
 
 /* ============ BASE ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(26,110,245,0.45) transparent; }
 body {
   background: var(--bg); color: var(--text); font-family: var(--font);

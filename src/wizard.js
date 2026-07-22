@@ -395,7 +395,7 @@
     })
     .finally(function () {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar minha ideia 🚀';
+      submitBtn.textContent = 'Enviar';
     });
   }
 
