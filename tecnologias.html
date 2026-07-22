@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#1a6ef5">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a6ef5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1122" media="(prefers-color-scheme: dark)">
 <title>Tecnologias — Caique Silva</title>
 <meta name="description" content="Flutter, Node.js, Python, Docker, automações com IA e mais — as tecnologias que uso para tirar projetos do papel.">
 <meta property="og:type" content="website">
@@ -48,26 +49,33 @@
 </header>
 
 <section class="container page-section" aria-label="Lista de tecnologias">
+  <div class="filter-bar fade-in" role="group" aria-label="Filtrar tecnologias por categoria">
+    <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">✨ Todas</button>
+    <button type="button" class="filter-chip" data-filter="dev" aria-pressed="false">💻 Desenvolvimento</button>
+    <button type="button" class="filter-chip" data-filter="ia" aria-pressed="false">🤖 IA &amp; Automação</button>
+    <button type="button" class="filter-chip" data-filter="infra" aria-pressed="false">🌐 Infra &amp; Redes</button>
+    <button type="button" class="filter-chip" data-filter="gestao" aria-pressed="false">🏪 Gestão &amp; Varejo</button>
+  </div>
   <div class="tech-grid">
-    <div class="tech-card fade-in"><div class="tech-icon">🐦</div><div class="tech-name">Flutter / Dart</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🐍</div><div class="tech-name">Python</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🟩</div><div class="tech-name">Node.js</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🔄</div><div class="tech-name">N8N</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🐧</div><div class="tech-name">Linux</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🖥️</div><div class="tech-name">VPS / Cloud</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🤖</div><div class="tech-name">AI Agents</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🧠</div><div class="tech-name">Claude AI</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">📡</div><div class="tech-name">Redes / Cisco</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🔒</div><div class="tech-name">VPN</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">📹</div><div class="tech-name">CFTV / DVR</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🏪</div><div class="tech-name">ERP / CRM</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🧾</div><div class="tech-name">PDV / Retaguarda</div></div>
-    <div class="tech-card fade-in"><div class="tech-icon">🗜️</div><div class="tech-name">Rack / Infra</div></div>
+    <div class="tech-card fade-in" data-cat="dev" data-tilt="8"><div class="tech-icon">🐦</div><div class="tech-name">Flutter / Dart</div></div>
+    <div class="tech-card fade-in" data-cat="dev" data-tilt="8"><div class="tech-icon">🐍</div><div class="tech-name">Python</div></div>
+    <div class="tech-card fade-in" data-cat="dev" data-tilt="8"><div class="tech-icon">🟩</div><div class="tech-name">Node.js</div></div>
+    <div class="tech-card fade-in" data-cat="ia" data-tilt="8"><div class="tech-icon">🔄</div><div class="tech-name">N8N</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">🐧</div><div class="tech-name">Linux</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">🖥️</div><div class="tech-name">VPS / Cloud</div></div>
+    <div class="tech-card fade-in" data-cat="ia" data-tilt="8"><div class="tech-icon">🤖</div><div class="tech-name">AI Agents</div></div>
+    <div class="tech-card fade-in" data-cat="ia" data-tilt="8"><div class="tech-icon">🧠</div><div class="tech-name">Claude AI</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">📡</div><div class="tech-name">Redes / Cisco</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">🔒</div><div class="tech-name">VPN</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">📹</div><div class="tech-name">CFTV / DVR</div></div>
+    <div class="tech-card fade-in" data-cat="gestao" data-tilt="8"><div class="tech-icon">🏪</div><div class="tech-name">ERP / CRM</div></div>
+    <div class="tech-card fade-in" data-cat="gestao" data-tilt="8"><div class="tech-icon">🧾</div><div class="tech-name">PDV / Retaguarda</div></div>
+    <div class="tech-card fade-in" data-cat="infra" data-tilt="8"><div class="tech-icon">🗜️</div><div class="tech-name">Rack / Infra</div></div>
   </div>
 </section>
 
-<section class="page-cta">
+<section class="page-cta band-blue">
   <div class="page-cta-inner">
     <div class="fade-in">
       <h2>Alguma dessas no seu projeto?</h2>

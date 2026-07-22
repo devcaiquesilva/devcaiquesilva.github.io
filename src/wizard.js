@@ -18,6 +18,8 @@
   var steps = Logic.getStepOrder(null);
   var currentIndex = 0;
   var lastRenderedTipo = null;
+  var hasNavigated = false;
+  var EMAIL_RE = /^\S+@\S+\.\S+$/;
 
   var backBtn = document.getElementById('wizardBackBtn');
   var nextBtn = document.getElementById('wizardNextBtn');
@@ -117,6 +119,11 @@
     progressBar.style.width = (((index + 1) / steps.length) * 100) + '%';
 
     if (stepId === 'revisao') renderReview();
+
+    if (hasNavigated && target) {
+      var q = target.querySelector('.wizard-question');
+      if (q) { q.setAttribute('tabindex', '-1'); q.focus({ preventScroll: true }); }
+    }
   }
 
   function isStepValid(index) {
@@ -130,8 +137,21 @@
     if (stepId === 'descricao') return state.descricao.trim().length >= 10;
     if (stepId === 'prazo') return !!state.prazo;
     if (stepId === 'investimento') return true;
-    if (stepId === 'contato') return state.nome.trim().length > 0 && state.whatsapp.trim().length > 0;
+    if (stepId === 'contato') {
+      if (state.email && !EMAIL_RE.test(state.email.trim())) return false;
+      return state.nome.trim().length > 0 && state.whatsapp.trim().length > 0;
+    }
     return true;
+  }
+
+  function markContatoFields() {
+    [
+      ['wizardNome', !state.nome.trim()],
+      ['wizardZap', !state.whatsapp.trim()],
+      ['wizardEmail', !!(state.email && !EMAIL_RE.test(state.email.trim()))]
+    ].forEach(function (p) {
+      document.getElementById(p[0]).classList.toggle('input-invalid', p[1]);
+    });
   }
 
   function shakeCurrentStep() {
@@ -143,7 +163,12 @@
   }
 
   function goNext() {
-    if (!isStepValid(currentIndex)) { shakeCurrentStep(); return; }
+    if (!isStepValid(currentIndex)) {
+      if (steps[currentIndex] === 'contato') markContatoFields();
+      shakeCurrentStep();
+      return;
+    }
+    hasNavigated = true;
 
     if (steps[currentIndex] === 'tipo' && state.tipo !== lastRenderedTipo) {
       recomputeSteps();
@@ -160,6 +185,7 @@
 
   function goBack() {
     if (currentIndex === 0) return;
+    hasNavigated = true;
     currentIndex--;
     showStep(currentIndex);
     saveProgress();
@@ -209,9 +235,9 @@
   }
 
   function bindContatoEvents() {
-    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; updateSummary(); });
-    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; updateSummary(); });
-    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; updateSummary(); });
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
   }
 
   /* ===== NAVEGACAO POR TECLADO ===== */
@@ -348,6 +374,61 @@
   var errorBox = document.getElementById('wizardError');
   var successBox = document.getElementById('briefingSuccess');
 
+  /* EmailJS: e-mail formatado com o template do site (IDs públicos, sem risco) */
+  var EMAILJS = {
+    serviceId: 'service_gbh96cp',
+    templateId: 'template_0mo4v36',
+    publicKey: 'ATXBj7Xv4IsxZ2k63'
+  };
+
+  function buildClientWhatsAppLink() {
+    var digits = (state.whatsapp || '').replace(/\D/g, '');
+    if (digits.length >= 10 && digits.indexOf('55') !== 0) digits = '55' + digits;
+    var primeiroNome = (state.nome || '').trim().split(' ')[0];
+    var msg = 'Olá' + (primeiroNome ? ', ' + primeiroNome : '') + '! Aqui é o Caique 😊 Recebi a sua ideia pelo site e já vou te responder!';
+    return 'https://wa.me/' + digits + '?text=' + encodeURIComponent(msg);
+  }
+
+  function buildTemplateParams() {
+    var extras = Logic.getBranchQuestions(state.tipo).map(function (q) {
+      return q.field + ' ' + (state.branchAnswers[q.field] || '—');
+    }).join('\n');
+    return {
+      tipo: state.tipo || '—',
+      extras: extras || '—',
+      descricao: state.descricao || '—',
+      prazo: state.prazo || '—',
+      investimento: Logic.formatCurrency(state.investimento),
+      nome: state.nome || '—',
+      whatsapp: state.whatsapp || '—',
+      email: state.email || '—',
+      reply_to: state.email || '',
+      whatsapp_link: buildClientWhatsAppLink(),
+      data: new Date().toLocaleString('pt-BR')
+    };
+  }
+
+  function sendViaEmailJs() {
+    return fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service_id: EMAILJS.serviceId,
+        template_id: EMAILJS.templateId,
+        user_id: EMAILJS.publicKey,
+        template_params: buildTemplateParams()
+      })
+    }).then(function (r) { if (!r.ok) throw new Error('emailjs ' + r.status); });
+  }
+
+  function sendViaFormSubmit() {
+    return fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
+      method: 'POST',
+      body: buildFormData(),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (r) { if (!r.ok) throw new Error('formsubmit ' + r.status); return r.json(); });
+  }
+
   function buildFormData() {
     var fd = new FormData();
     var honey = form.querySelector('.hp');
@@ -375,12 +456,8 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando… ⏳';
 
-    fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
-      method: 'POST',
-      body: buildFormData(),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    sendViaEmailJs()
+    .catch(function () { return sendViaFormSubmit(); })
     .then(function () {
       clearProgress();
       document.getElementById('bsNome').textContent = (state.nome || 'você') + '!';

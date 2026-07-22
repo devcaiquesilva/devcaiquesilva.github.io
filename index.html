@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#1a6ef5">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a6ef5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1122" media="(prefers-color-scheme: dark)">
 <title>Caique Silva — Desenvolvedor</title>
 <meta name="description" content="Caique Silva — Desenvolvedor de software. Sites, aplicativos, sistemas e automações com IA. Me conta a sua ideia e receba um orçamento gratuito, sem compromisso.">
 <meta property="og:type" content="website">
@@ -42,8 +43,10 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Apresentação">
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="glow glow-a" aria-hidden="true"></div>
   <div class="glow glow-b" aria-hidden="true"></div>
+  <div class="hero-inner">
   <div class="hero-content">
     <div class="hero-tag fade-in" style="--d:.05s">Desenvolvedor de Software &amp; TI</div>
     <h1 aria-label="Caique Silva">
@@ -76,6 +79,7 @@
       <div class="status-item">📍 Socorro, SP — Brasil</div>
     </div>
   </div>
+  </div>
   <a class="scroll-hint" href="#servicos">
     <span>role para conhecer</span>
     <span class="sh-chevron" aria-hidden="true"></span>
@@ -92,28 +96,28 @@
   </div>
   <div class="service-grid">
 
-    <a href="orcamento.html" class="service-card fade-in">
+    <a href="orcamento.html" class="service-card fade-in" data-tilt="6">
       <span class="sc-emoji">🌐</span>
       <span class="sc-title">Sites</span>
       <span class="sc-desc">Site institucional, página pessoal ou landing page — com a cara do seu negócio.</span>
       <span class="sc-link">pedir orçamento</span>
     </a>
 
-    <a href="orcamento.html" class="service-card fade-in">
+    <a href="orcamento.html" class="service-card fade-in" data-tilt="6">
       <span class="sc-emoji">🛒</span>
       <span class="sc-title">Lojas virtuais</span>
       <span class="sc-desc">Venda seus produtos online com catálogo e pedidos direto no WhatsApp.</span>
       <span class="sc-link">pedir orçamento</span>
     </a>
 
-    <a href="orcamento.html" class="service-card fade-in">
+    <a href="orcamento.html" class="service-card fade-in" data-tilt="6">
       <span class="sc-emoji">📱</span>
       <span class="sc-title">Aplicativos</span>
       <span class="sc-desc">Apps para Android e iOS, do design à publicação nas lojas.</span>
       <span class="sc-link">pedir orçamento</span>
     </a>
 
-    <a href="orcamento.html" class="service-card fade-in">
+    <a href="orcamento.html" class="service-card fade-in" data-tilt="6">
       <span class="sc-emoji">🤖</span>
       <span class="sc-title">Sistemas &amp; IA</span>
       <span class="sc-desc">Painéis de gestão, plataformas e automações com inteligência artificial.</span>
@@ -126,14 +130,15 @@
 <hr class="divider">
 
 <!-- MAIS SOBRE MIM -->
-<section class="container" aria-labelledby="mais-title">
+<section class="band-blue" aria-labelledby="mais-title">
+  <div class="container">
   <div class="section-header fade-in">
     <div class="section-label">// mais sobre mim</div>
     <h2 class="section-title" id="mais-title">Quer me conhecer melhor?</h2>
   </div>
   <div class="explore-grid">
 
-    <a href="tecnologias.html" class="explore-card fade-in">
+    <a href="tecnologias.html" class="explore-card fade-in" data-tilt="4">
       <span class="ec-left">
         <span class="ec-emoji">🧰</span>
         <span>
@@ -144,7 +149,7 @@
       <span class="ec-arrow" aria-hidden="true">&rarr;</span>
     </a>
 
-    <a href="experiencia.html" class="explore-card fade-in">
+    <a href="experiencia.html" class="explore-card fade-in" data-tilt="4">
       <span class="ec-left">
         <span class="ec-emoji">💼</span>
         <span>
@@ -155,7 +160,7 @@
       <span class="ec-arrow" aria-hidden="true">&rarr;</span>
     </a>
 
-    <a href="projetos.html" class="explore-card fade-in">
+    <a href="projetos.html" class="explore-card fade-in" data-tilt="4">
       <span class="ec-left">
         <span class="ec-emoji">🚀</span>
         <span>
@@ -166,6 +171,7 @@
       <span class="ec-arrow" aria-hidden="true">&rarr;</span>
     </a>
 
+  </div>
   </div>
 </section>
 

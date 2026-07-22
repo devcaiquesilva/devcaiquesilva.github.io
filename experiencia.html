@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#1a6ef5">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a6ef5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1122" media="(prefers-color-scheme: dark)">
 <title>Experiência — Caique Silva</title>
 <meta name="description" content="Minha trajetória como desenvolvedor de software e TI: M.S. Kuroda, MELOZ e projetos próprios.">
 <meta property="og:type" content="website">
@@ -48,9 +49,12 @@
 </header>
 
 <section class="container page-section" aria-label="Histórico profissional">
-  <div class="exp-grid">
+  <div class="timeline">
+    <div class="timeline-line" aria-hidden="true"><div class="timeline-line-progress"></div></div>
 
-    <article class="exp-card kuroda-exp fade-in">
+    <div class="timeline-item tl-left fade-in">
+    <span class="timeline-dot" aria-hidden="true"></span>
+    <article class="exp-card kuroda-exp">
       <div class="exp-header">
         <div>
           <div class="exp-company">M.S. Kuroda</div>
@@ -73,8 +77,11 @@
         <span class="tag">Riverpod</span>
       </div>
     </article>
+    </div>
 
-    <article class="exp-card kuroda-exp fade-in">
+    <div class="timeline-item tl-right fade-in">
+    <span class="timeline-dot" aria-hidden="true"></span>
+    <article class="exp-card kuroda-exp">
       <div class="exp-header">
         <div>
           <div class="exp-company">M.S. Kuroda</div>
@@ -99,8 +106,11 @@
         <span class="tag">Rack</span>
       </div>
     </article>
+    </div>
 
-    <article class="exp-card meloz-exp fade-in">
+    <div class="timeline-item tl-left fade-in">
+    <span class="timeline-dot" aria-hidden="true"></span>
+    <article class="exp-card meloz-exp">
       <div class="exp-header">
         <div>
           <div class="exp-company">MELOZ</div>
@@ -125,8 +135,11 @@
         <span class="tag red">Clean Arch</span>
       </div>
     </article>
+    </div>
 
-    <article class="exp-card pessoal-exp fade-in">
+    <div class="timeline-item tl-right fade-in">
+    <span class="timeline-dot" aria-hidden="true"></span>
+    <article class="exp-card pessoal-exp">
       <div class="exp-header">
         <div>
           <div class="exp-company">Projetos Próprios</div>
@@ -149,11 +162,12 @@
         <span class="tag">VPS</span>
       </div>
     </article>
+    </div>
 
   </div>
 </section>
 
-<section class="page-cta">
+<section class="page-cta band-blue">
   <div class="page-cta-inner">
     <div class="fade-in">
       <h2>Vamos escrever o próximo capítulo juntos?</h2>

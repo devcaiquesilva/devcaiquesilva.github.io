@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#1a6ef5">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1a6ef5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1122" media="(prefers-color-scheme: dark)">
 <title>Orçamento — Caique Silva</title>
 <meta name="description" content="Me conta a sua ideia — site, app, sistema ou automação — e receba um orçamento gratuito em até 24h, sem compromisso.">
 <meta property="og:type" content="website">
@@ -57,9 +58,9 @@
         <li><span class="step-num">3</span><span><strong>Conversamos e monto uma proposta</strong> sob medida para o seu prazo e o seu bolso.</span></li>
       </ol>
       <div class="briefing-chips">
-        <span class="chip">✅ Sem compromisso</span>
-        <span class="chip">⚡ Resposta em até 24h</span>
-        <span class="chip">💰 Orçamento gratuito</span>
+        <span class="chip">Sem compromisso ✅</span>
+        <span class="chip">Resposta em até 24h ✅</span>
+        <span class="chip">Orçamento gratuito ✅</span>
       </div>
     </div>
 
@@ -102,7 +103,7 @@
               <h2 class="wizard-question">Quanto pensa em investir?</h2>
               <div class="wizard-slider-wrap">
                 <div class="wizard-slider-value" id="wizardInvestValue">R$ 2.000</div>
-                <input type="range" class="wizard-slider" id="wizardInvestRange" min="500" max="10000" step="100" value="2000">
+                <input type="range" class="wizard-slider" id="wizardInvestRange" min="500" max="10000" step="100" value="2000" aria-label="Valor de investimento em reais">
                 <div class="wizard-slider-scale"><span>R$ 500</span><span>R$ 10.000+</span></div>
               </div>
               <div class="form-hint">Arraste até o valor que faz sentido pra você — é só uma referência, dá pra ajustar depois. 🙂</div>
@@ -172,7 +173,7 @@
 </section>
 
 <!-- CONTATO -->
-<section class="contact-section" id="contato" aria-labelledby="contato-title">
+<section class="contact-section band-blue" id="contato" aria-labelledby="contato-title">
   <div class="contact-inner">
     <div class="contact-text fade-in">
       <h2 id="contato-title">Prefere falar<br>direto comigo?</h2>
