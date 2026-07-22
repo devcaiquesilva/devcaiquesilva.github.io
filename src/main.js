@@ -206,6 +206,13 @@
       var W = 0, H = 0, parts = [], raf = null, onScreen = true;
       var mouse = { x: -9999, y: -9999 };
       var LINK = 130, MOUSE_LINK = 170;
+      /* cores adaptadas ao modo claro/escuro */
+      var darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var DOT_COLOR = darkMode ? 'rgba(122,177,255,0.55)' : 'rgba(26,110,245,0.35)';
+      var LINE_RGB = darkMode ? '122,177,255' : '26,110,245';
+      var MOUSE_RGB = darkMode ? '38,201,242' : '0,180,230';
+      var LINE_ALPHA = darkMode ? 0.2 : 0.14;
+      var MOUSE_ALPHA = darkMode ? 0.3 : 0.22;
 
       function resize() {
         W = hero.clientWidth;
@@ -233,7 +240,7 @@
           if (p.y < 0 || p.y > H) p.vy *= -1;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(26,110,245,0.35)';
+          ctx.fillStyle = DOT_COLOR;
           ctx.fill();
           for (var j = i + 1; j < parts.length; j++) {
             var q = parts[j];
@@ -243,7 +250,7 @@
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(q.x, q.y);
-              ctx.strokeStyle = 'rgba(26,110,245,' + (0.14 * (1 - d / LINK)).toFixed(3) + ')';
+              ctx.strokeStyle = 'rgba(' + LINE_RGB + ',' + (LINE_ALPHA * (1 - d / LINK)).toFixed(3) + ')';
               ctx.lineWidth = 1;
               ctx.stroke();
             }
@@ -254,7 +261,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = 'rgba(0,180,230,' + (0.22 * (1 - md / MOUSE_LINK)).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(' + MOUSE_RGB + ',' + (MOUSE_ALPHA * (1 - md / MOUSE_LINK)).toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.stroke();
           }
