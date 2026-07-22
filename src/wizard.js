@@ -374,6 +374,61 @@
   var errorBox = document.getElementById('wizardError');
   var successBox = document.getElementById('briefingSuccess');
 
+  /* EmailJS: e-mail formatado com o template do site (IDs públicos, sem risco) */
+  var EMAILJS = {
+    serviceId: 'service_f5fhavj',
+    templateId: 'template_0mo4v36',
+    publicKey: 'ATXBj7Xv4IsxZ2k63'
+  };
+
+  function buildClientWhatsAppLink() {
+    var digits = (state.whatsapp || '').replace(/\D/g, '');
+    if (digits.length >= 10 && digits.indexOf('55') !== 0) digits = '55' + digits;
+    var primeiroNome = (state.nome || '').trim().split(' ')[0];
+    var msg = 'Olá' + (primeiroNome ? ', ' + primeiroNome : '') + '! Aqui é o Caique 😊 Recebi a sua ideia pelo site e já vou te responder!';
+    return 'https://wa.me/' + digits + '?text=' + encodeURIComponent(msg);
+  }
+
+  function buildTemplateParams() {
+    var extras = Logic.getBranchQuestions(state.tipo).map(function (q) {
+      return q.field + ' ' + (state.branchAnswers[q.field] || '—');
+    }).join('\n');
+    return {
+      tipo: state.tipo || '—',
+      extras: extras || '—',
+      descricao: state.descricao || '—',
+      prazo: state.prazo || '—',
+      investimento: Logic.formatCurrency(state.investimento),
+      nome: state.nome || '—',
+      whatsapp: state.whatsapp || '—',
+      email: state.email || '—',
+      reply_to: state.email || '',
+      whatsapp_link: buildClientWhatsAppLink(),
+      data: new Date().toLocaleString('pt-BR')
+    };
+  }
+
+  function sendViaEmailJs() {
+    return fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service_id: EMAILJS.serviceId,
+        template_id: EMAILJS.templateId,
+        user_id: EMAILJS.publicKey,
+        template_params: buildTemplateParams()
+      })
+    }).then(function (r) { if (!r.ok) throw new Error('emailjs ' + r.status); });
+  }
+
+  function sendViaFormSubmit() {
+    return fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
+      method: 'POST',
+      body: buildFormData(),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (r) { if (!r.ok) throw new Error('formsubmit ' + r.status); return r.json(); });
+  }
+
   function buildFormData() {
     var fd = new FormData();
     var honey = form.querySelector('.hp');
@@ -401,12 +456,8 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando… ⏳';
 
-    fetch('https://formsubmit.co/ajax/8bccbc0af1756383496ac8812fae2780', {
-      method: 'POST',
-      body: buildFormData(),
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    sendViaEmailJs()
+    .catch(function () { return sendViaFormSubmit(); })
     .then(function () {
       clearProgress();
       document.getElementById('bsNome').textContent = (state.nome || 'você') + '!';

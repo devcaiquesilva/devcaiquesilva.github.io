@@ -393,7 +393,10 @@ section { position: relative; z-index: 1; }
 
 .briefing-intro .section-title { margin-bottom: 1rem; }
 .briefing-text { color: var(--text-dim); font-size: 1rem; line-height: 1.75; margin-bottom: 1.75rem; }
-.briefing-steps { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem; }
+.briefing-steps {
+  list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem;
+  background: #e4efff; border: 1px solid #c9dcfa; border-radius: 18px; padding: 1.4rem 1.5rem;
+}
 .briefing-steps li { display: flex; gap: 0.9rem; align-items: flex-start; color: var(--text-dim); font-size: 0.95rem; line-height: 1.55; }
 .briefing-steps li strong { color: var(--text); }
 .step-num {
@@ -816,8 +819,19 @@ footer p { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-s
   nav.scrolled { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
   .tech-card, .exp-card, .project-card, .service-card, .explore-card,
-  .contact-link, .briefing-card, .type-card, .chip, .filter-chip,
+  .contact-link, .briefing-card, .chip, .filter-chip,
   .form-input, .form-textarea, .snackbar { background: #101c38; }
+
+  /* cards de opção do wizard permanecem brancos no escuro */
+  .type-card { background: #ffffff; }
+  .type-card .tc-title { color: #17253f; }
+  .type-card .tc-desc { color: #62708c; }
+  .type-card.selected { background: #eef4ff; }
+
+  /* card dos passos: branco no escuro */
+  .briefing-steps { background: #ffffff; border-color: #ffffff; }
+  .briefing-steps li { color: #4d5e7d; }
+  .briefing-steps li strong { color: #17253f; }
 
   .glow-a { background: radial-gradient(circle, rgba(59,130,255,0.2) 0%, rgba(59,130,255,0.08) 40%, transparent 70%); }
   .glow-b { background: radial-gradient(circle, rgba(38,201,242,0.16) 0%, rgba(38,201,242,0.06) 40%, transparent 70%); }
