@@ -18,6 +18,8 @@
   var steps = Logic.getStepOrder(null);
   var currentIndex = 0;
   var lastRenderedTipo = null;
+  var hasNavigated = false;
+  var EMAIL_RE = /^\S+@\S+\.\S+$/;
 
   var backBtn = document.getElementById('wizardBackBtn');
   var nextBtn = document.getElementById('wizardNextBtn');
@@ -117,6 +119,11 @@
     progressBar.style.width = (((index + 1) / steps.length) * 100) + '%';
 
     if (stepId === 'revisao') renderReview();
+
+    if (hasNavigated && target) {
+      var q = target.querySelector('.wizard-question');
+      if (q) { q.setAttribute('tabindex', '-1'); q.focus({ preventScroll: true }); }
+    }
   }
 
   function isStepValid(index) {
@@ -130,8 +137,21 @@
     if (stepId === 'descricao') return state.descricao.trim().length >= 10;
     if (stepId === 'prazo') return !!state.prazo;
     if (stepId === 'investimento') return true;
-    if (stepId === 'contato') return state.nome.trim().length > 0 && state.whatsapp.trim().length > 0;
+    if (stepId === 'contato') {
+      if (state.email && !EMAIL_RE.test(state.email.trim())) return false;
+      return state.nome.trim().length > 0 && state.whatsapp.trim().length > 0;
+    }
     return true;
+  }
+
+  function markContatoFields() {
+    [
+      ['wizardNome', !state.nome.trim()],
+      ['wizardZap', !state.whatsapp.trim()],
+      ['wizardEmail', !!(state.email && !EMAIL_RE.test(state.email.trim()))]
+    ].forEach(function (p) {
+      document.getElementById(p[0]).classList.toggle('input-invalid', p[1]);
+    });
   }
 
   function shakeCurrentStep() {
@@ -143,7 +163,12 @@
   }
 
   function goNext() {
-    if (!isStepValid(currentIndex)) { shakeCurrentStep(); return; }
+    if (!isStepValid(currentIndex)) {
+      if (steps[currentIndex] === 'contato') markContatoFields();
+      shakeCurrentStep();
+      return;
+    }
+    hasNavigated = true;
 
     if (steps[currentIndex] === 'tipo' && state.tipo !== lastRenderedTipo) {
       recomputeSteps();
@@ -160,6 +185,7 @@
 
   function goBack() {
     if (currentIndex === 0) return;
+    hasNavigated = true;
     currentIndex--;
     showStep(currentIndex);
     saveProgress();
@@ -209,9 +235,9 @@
   }
 
   function bindContatoEvents() {
-    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; updateSummary(); });
-    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; updateSummary(); });
-    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; updateSummary(); });
+    document.getElementById('wizardNome').addEventListener('input', function (e) { state.nome = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
+    document.getElementById('wizardZap').addEventListener('input', function (e) { state.whatsapp = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
+    document.getElementById('wizardEmail').addEventListener('input', function (e) { state.email = e.target.value; e.target.classList.remove('input-invalid'); updateSummary(); });
   }
 
   /* ===== NAVEGACAO POR TECLADO ===== */
