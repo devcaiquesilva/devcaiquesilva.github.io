@@ -376,7 +376,7 @@
 
   /* EmailJS: e-mail formatado com o template do site (IDs públicos, sem risco) */
   var EMAILJS = {
-    serviceId: 'service_f5fhavj',
+    serviceId: 'service_gbh96cp',
     templateId: 'template_0mo4v36',
     publicKey: 'ATXBj7Xv4IsxZ2k63'
   };
