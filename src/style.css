@@ -710,6 +710,21 @@ footer p { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-s
 }
 [data-tilt].tilt:hover { --tl: -4px; }
 
+/* ============ BOTAO FLUTUANTE DO WHATSAPP ============ */
+.whatsapp-float {
+  position: fixed; right: 20px; bottom: 20px; bottom: calc(20px + env(safe-area-inset-bottom));
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28); z-index: 150;
+  transition: transform 0.3s var(--spring), box-shadow 0.25s;
+}
+.whatsapp-float:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 10px 26px rgba(0,0,0,0.32); }
+.whatsapp-float svg { width: 30px; height: 30px; display: block; }
+@media (max-width: 480px) {
+  .whatsapp-float { width: 50px; height: 50px; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .whatsapp-float svg { width: 26px; height: 26px; }
+}
+
 /* ============ RESPONSIVO ============ */
 @media (max-width: 960px) {
   .briefing-inner { grid-template-columns: 1fr; gap: 2.5rem; }

@@ -51,6 +51,10 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   [data-stack-mobile] > *:first-child{position:static !important;top:auto !important}
 }
 @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
+.whatsapp-float{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.28);z-index:150;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s}
+.whatsapp-float:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 10px 26px rgba(0,0,0,0.32)}
+.whatsapp-float svg{width:30px;height:30px;display:block}
+@media (max-width:480px){.whatsapp-float{width:50px;height:50px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}.whatsapp-float svg{width:26px;height:26px}}
 </style>
 </head>
 <body>
@@ -200,6 +204,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <a href="orcamento.html#contato" style="font-size:12px;font-weight:700;color:var(--muted);text-decoration:none" style-hover="color:var(--blue)">contato</a>
   </div>
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/5519999819875?text=Ol%C3%A1%2C%20Caique!%20Vim%20pelo%20seu%20site%20%F0%9F%98%8A" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.697 4.61 1.902 6.484L4 29l7.723-1.865A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.985-1.363l-.357-.212-4.583 1.107 1.127-4.463-.232-.366A9.78 9.78 0 0 1 6.182 15c0-5.42 4.4-9.818 9.819-9.818 5.418 0 9.818 4.398 9.818 9.818 0 5.419-4.4 9.818-9.818 9.818zm5.396-7.35c-.295-.148-1.746-.86-2.017-.959-.27-.099-.467-.148-.664.148-.197.296-.762.958-.934 1.155-.172.198-.344.222-.639.074-.295-.148-1.244-.459-2.37-1.464-.876-.782-1.468-1.748-1.64-2.044-.172-.296-.018-.456.13-.603.134-.133.296-.345.443-.518.148-.173.197-.296.296-.494.099-.198.05-.371-.025-.519-.074-.148-.664-1.6-.91-2.192-.24-.577-.484-.499-.664-.508l-.566-.01c-.198 0-.519.074-.79.371-.271.296-1.036 1.012-1.036 2.469 0 1.457 1.06 2.864 1.208 3.062.148.198 2.086 3.186 5.055 4.467.706.305 1.257.487 1.686.623.708.225 1.353.193 1.862.117.568-.085 1.746-.714 1.992-1.403.246-.69.246-1.28.172-1.403-.074-.123-.27-.198-.567-.346z"/></svg></a>
 
 <noscript>
   <style>[data-reveal] { opacity: 1 !important; transform: none !important; }</style>
