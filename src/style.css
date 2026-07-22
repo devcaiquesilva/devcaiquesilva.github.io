@@ -817,6 +817,9 @@ footer p { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-s
 
   nav { background: rgba(10,17,34,0.85); }
   nav.scrolled { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  @media (max-width: 768px) {
+    .nav-links { background: rgba(10,17,34,0.96); box-shadow: 0 16px 30px rgba(0,0,0,0.4); }
+  }
 
   .tech-card, .exp-card, .project-card, .service-card, .explore-card,
   .contact-link, .briefing-card, .chip, .filter-chip,
