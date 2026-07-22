@@ -134,6 +134,27 @@
     });
   }
 
+  /* ===== LINHA DA TIMELINE (preenche conforme o scroll) ===== */
+  var tlProgress = document.querySelector('.timeline-line-progress');
+  if (tlProgress && !reduceMotion) {
+    var tlLine = tlProgress.parentElement;
+    var tlTicking = false;
+    var updateTimeline = function () {
+      var viewH = window.innerHeight || document.documentElement.clientHeight;
+      var r = tlLine.getBoundingClientRect();
+      var p = r.height ? (viewH - r.top) / r.height : 1;
+      p = Math.max(0, Math.min(1, p));
+      tlProgress.style.transform = 'scaleY(' + p.toFixed(4) + ')';
+      tlTicking = false;
+    };
+    /* capture pega o scroll de qualquer contêiner, não só da window */
+    document.addEventListener('scroll', function () {
+      if (!tlTicking) { tlTicking = true; requestAnimationFrame(updateTimeline); }
+    }, { capture: true, passive: true });
+    window.addEventListener('resize', updateTimeline);
+    updateTimeline();
+  }
+
   /* ===== TILT 3D (cards com data-tilt) ===== */
   if (window.matchMedia('(pointer: fine)').matches && !reduceMotion) {
     document.querySelectorAll('[data-tilt]').forEach(function (el) {
