@@ -385,7 +385,7 @@
     var digits = (state.whatsapp || '').replace(/\D/g, '');
     if (digits.length >= 10 && digits.indexOf('55') !== 0) digits = '55' + digits;
     var primeiroNome = (state.nome || '').trim().split(' ')[0];
-    var msg = 'Olá' + (primeiroNome ? ', ' + primeiroNome : '') + '! Aqui é o Caique 😊 Recebi a sua ideia pelo site e já vou te responder!';
+    var msg = 'Olá' + (primeiroNome ? ', ' + primeiroNome : '') + '! Aqui é a Paju Code 😊 Recebemos a sua ideia pelo site e já vamos te responder!';
     return 'https://wa.me/' + digits + '?text=' + encodeURIComponent(msg);
   }
 

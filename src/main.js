@@ -293,7 +293,7 @@
   if (!document.querySelector('.whatsapp-float')) {
     var waBtn = document.createElement('a');
     waBtn.className = 'whatsapp-float';
-    waBtn.href = 'https://wa.me/5519999819875?text=' + encodeURIComponent('Olá, Caique! Vim pelo seu site 😊');
+    waBtn.href = 'https://wa.me/5519999819875?text=' + encodeURIComponent('Olá, Paju Code! Vim pelo seu site 😊');
     waBtn.target = '_blank';
     waBtn.rel = 'noopener';
     waBtn.setAttribute('aria-label', 'Conversar no WhatsApp');

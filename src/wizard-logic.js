@@ -84,7 +84,7 @@
   }
 
   function buildWhatsAppMessage(state) {
-    var msg = 'Olá, Caique! Vim pelo seu site 😊\n\n';
+    var msg = 'Olá, Paju Code! Vim pelo seu site 😊\n\n';
     buildSummaryLines(state).forEach(function (l) {
       if (l.label === 'Nome' || l.label === 'WhatsApp' || l.label === 'E-mail') return;
       msg += '📌 ' + l.label + ': ' + l.value + '\n';
